@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form [formGroup]="resenaForm" (ngSubmit)="onSubmit()">
+                <label for="author">Ingrese autor de la discusión: </label>
+                <input type="text" id="author" placeholder="autor discusion" formControlName="autor">
+                <label for="title">Ingrese título de la discusión: </label>
+                <input type="text" id="title" placeholder="título discusión" formControlName="titulo">
+                <label for="contenido" id="contenido">Ingrese el contenido de su discusión: </label>
+                <textarea type="text" id="contenido" placeholder="Ingrese discusión..." formControlName="contenido"></textarea>
+                <button class="btn" type="submit">Enviar</button>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+

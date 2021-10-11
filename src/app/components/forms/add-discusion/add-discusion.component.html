@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form [formGroup]="discusionForm" (ngSubmit)="onSubmit()" id="discusionForm">
+               <label for="title">Ingrese título de la discusión: </label>
+                <input type="text" id="title" placeholder="título discusión" formControlName="titulo">
+                <label for="contenido">Ingrese el contenido de su discusión: </label>
+                <textarea type="text" id="contenido" placeholder="Ingrese discusión..." formControlName="contenido"></textarea>
+                    <p>
+                      <label for="aula-virtual">
+                        <input type="checkbox" id="aula-virtual"/>
+                        <span>aula-virtual</span>
+                      </label>
+                    </p>
+                    <p>
+                        <label>
+                          <input type="checkbox" id="algebra-lineal"/>
+                          <span>algebra-lineal</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                          <input type="checkbox" id="ibc"/>
+                          <span>ibc</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                          <input type="checkbox" id="biblioteca-fin"/>
+                          <span>biblioteca-fin</span>
+                        </label>
+                      </p>
+                    <p>
+                        <label>
+                          <input type="checkbox" id="inf"/>
+                          <span>inf</span>
+                        </label>
+                    </p>
+                <button class="btn" type="submit">Enviar</button>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+

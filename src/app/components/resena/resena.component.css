@@ -1,0 +1,30 @@
+img {
+  width: 140px;
+  height: 140px;
+  border-radius: 4%;
+  border: black solid 2px;
+}
+.data {
+  border: black solid 2px;
+  background-color: #ffccb3;
+  padding: 1em;
+  border-radius: 2%;
+  margin-top: 2em;
+}
+textarea {
+  border: black solid 2px;
+  border-radius: 2%;
+  background-color: blanchedalmond;
+}
+.input-comentario {
+  border: black solid 2px;
+  background-color: #ffccb3;
+  padding: 2%;
+}
+#comment {
+  border: black solid 2px;
+  background-color: #ffccb3;
+  margin-top: 1em;
+  padding: 1em;
+  border-radius: 2%;
+}

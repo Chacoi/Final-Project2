@@ -1,0 +1,32 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <label for="inputUsername">Nombre de usuario: </label>
+                  <input class="form-control" type="text" formControlName="username" placeholder="nombre usuario">
+                  <!-- error -->
+                  <div class="invalid-feedback" *ngIf="submitted && myForm.username.errors?.required">
+                    Username is required.
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="inputPassword">Contrasena: </label>
+                  <input class="form-control" type="text" formControlName="password" placeholder="contraseña">
+                  <!-- error -->
+                  <div class="invalid-feedback" *ngIf="submitted && myForm.password.errors?.required">
+                    Password is required.
+                  </div>
+                </div>
+        
+                <div class="form-group mt-2">
+                  <button class="btn btn-lg btn-block" type="submit">Iniciar sesion</button>
+                </div>
+              </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>

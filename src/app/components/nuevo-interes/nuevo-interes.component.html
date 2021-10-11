@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div class="d-inline-flex">
+                <h4>Filtrar por:</h4>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">Asignaturas</a></li>
+                        <li><a class="dropdown-item" href="#">Eventos</a></li>
+                        <li><a class="dropdown-item" href="#">Departamentos</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 subject-list">
+            <div class="subject" *ngFor="let interes of intereses">
+                <img src=interes.imagen alt="">
+                <span>{{interes.nombre}}</span>
+                <div class="d-inline-flex btn-group justify-content-end">
+                    <button class="btn btn-success mas" (click)=onPlusClick(interes)>+</button>
+                    <button class="btn">Info</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>

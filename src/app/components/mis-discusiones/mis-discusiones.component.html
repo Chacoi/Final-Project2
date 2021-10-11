@@ -1,0 +1,26 @@
+<div class="container background">
+    <button class="btn mt-3" routerLink="/agregar-discusion" >Añadir discusión</button>
+    <ng-container *ngFor="let discusion of Discusion; let i = index">
+        <div class="row tList">
+            <div class="col-10 d-inline-flex title">
+                <div>
+                <img src="https://images.unsplash.com/photo-1612625365859-0721ffb8f7e6?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDN8cVBZc0R6dkpPWWN8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+                </div>
+                <div>
+                    <h4 class="title-text">{{discusion.titulo}}</h4>
+                    <span class="date">{{discusion.autor}}</span>
+                    <br>
+                    <span>etiqueta1, etiqueta2, etiqueta3, etiqueta4</span>
+                </div>
+            </div>
+            <div class="col-2 justify-content-end subject-body">
+                    <button class="btn me-interesa mr-5 mt-2" [routerLink]="['/', discusion._id]">Ver más</button>
+                    <br>
+                    <span>Creada el: 12-12-12</span>            
+            </div>
+            
+        </div>
+    </ng-container>
+    
+    
+</div>

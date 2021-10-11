@@ -1,0 +1,31 @@
+.container {
+  font-family: 'Libre Baskerville', serif;
+}
+.search-bar {
+  border: black solid 2px;
+}
+.search {
+  margin-top: 3em;
+  padding-top: 1em;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+.card {
+  border: black solid 2px;
+}
+img {
+  height: 190px;
+}
+.mis-intereses {
+  background-color: #ffbf80;
+  border-radius: 1%;
+}
+.cards {
+  margin-left: 2em;
+}
+button {
+  background-color: #662200;
+  color: blanchedalmond;
+  margin-left: 3em;
+  margin-bottom: 1em;
+}
