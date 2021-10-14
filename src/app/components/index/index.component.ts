@@ -12,7 +12,7 @@ export class IndexComponent implements OnInit {
   activeUser: any;
   constructor(private apiService: DiscusionService, private actRoute: ActivatedRoute) {
     this.getUsuario();
-    this.readDiscusion();
+    
     
    }
 
@@ -22,9 +22,11 @@ export class IndexComponent implements OnInit {
   readDiscusion(){
     console.log("inicio de readDiscusion()")
     if(this.activeUser.intereses){
+      console.log(this.activeUser.intereses)
       for(let interes of this.activeUser.intereses){
-        this.apiService.getDiscusionesInteres(interes).subscribe((data) => {
+        this.apiService.getDiscusionesInteres(interes.nombre).subscribe((data) => {
           console.log(data);
+          
            this.Discusion.push(data);
          }) 
       }
@@ -36,6 +38,8 @@ export class IndexComponent implements OnInit {
   getUsuario(){
     this.apiService.getUsuario().subscribe((data) =>{
       this.activeUser = data;
+      console.log("usuario validado");
+      this.readDiscusion();
     });
   }
 
