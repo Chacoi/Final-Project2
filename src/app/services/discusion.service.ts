@@ -40,7 +40,10 @@ export class DiscusionService {
 getDiscusiones(id: any){
   return this.http.get(`${this.baseUri}/${this.discusionUri}/${id}/discusion-list`, { withCredentials:true });
 }
-
+//Ver discusiones según usuario activo
+getDiscusionesByUser(): Observable<any>{
+  return this.http.get(`${this.baseUri}/${this.discusionUri}/discusion-user-list`, { withCredentials:true });
+}
 //Ver discusiones según interés
 getDiscusionesInteres(tag: any){
   return this.http.get(`${this.baseUri}/${this.discusionUri}/discusion-list/${tag}`, {withCredentials: true});
@@ -56,11 +59,22 @@ getDiscusion(id: any): Observable<any> {
   )
 }
  // Update discusion
- updateDiscusion(id: any, data: any): Observable<any> {
+updateDiscusion(id: any, data: any): Observable<any> {
   let url = `${this.baseUri}/${this.discusionUri}/discusion-update/${id}`;
   return this.http.put(url, data, { headers: this.headers, withCredentials:true }).pipe(
     catchError(this.errorMgmt)
   )
+}
+//Valorar discusion
+valorarDiscusion(id:any, data:any): Observable<any> {
+  console.log("Comienzo del servicio valorar");
+  console.log(id);
+  console.log(data);
+  let url = `${this.baseUri}/${this.discusionUri}/discusion-valorar/${id}`;
+  return this.http.put(url, data, { headers: this.headers, withCredentials:true}).pipe(
+    catchError(this.errorMgmt)
+  )
+  console.log("Fin del servicio valorar");
 }
  // Delete discusion
  deleteDiscusion(id: any): Observable<any> {
@@ -68,6 +82,10 @@ getDiscusion(id: any): Observable<any> {
   return this.http.delete(url, { headers: this.headers, withCredentials:true }).pipe(
     catchError(this.errorMgmt)
   )
+}
+//Contar valoraciones positivas de las discusiones
+countDiscusiones(): Observable<any> {
+  return this.http.get(`${this.baseUri}/${this.discusionUri}/discusion-count`, {withCredentials: true});
 }
 //-----------------------------
 //---------Comentario--------------
@@ -82,7 +100,7 @@ getDiscusion(id: any): Observable<any> {
   )
 }
     // Delete comentario
-    deleteComentario(id: any): Observable<any> {
+deleteComentario(id: any): Observable<any> {
       let url = `${this.baseUri}/${this.comentarioUri}/comentario-delete/${id}`;
       return this.http.delete(url, { headers: this.headers, withCredentials:true }).pipe(
         catchError(this.errorMgmt)
@@ -95,6 +113,24 @@ crearComentario(data: any, id:any): Observable<any>{
     .pipe(
       catchError(this.errorMgmt)
     )
+}
+//Valorar comentario
+valorarComentario(id: any, data: any): Observable<any>{
+  console.log("Comienzo del servicio valorar");
+  console.log(id);
+  console.log(data);
+  let url = `${this.baseUri}/${this.comentarioUri}/comentario-valorar/${id}`;
+  return this.http.put(url, data, { headers: this.headers, withCredentials:true}).pipe(
+    catchError(this.errorMgmt)
+  )
+}
+//Contar comends comentarios
+countComentarios(): Observable<any> {
+  return this.http.get(`${this.baseUri}/${this.comentarioUri}/comentario-count`, {withCredentials: true});
+}
+//Comentarios del usuario activo
+getComentariosByUser(): Observable<any>{
+  return this.http.get(`${this.baseUri}/${this.comentarioUri}/comentario-user-list`, { withCredentials:true });
 }
 //------------------------------
 //----------Usuario------------
@@ -126,12 +162,14 @@ getUsuario(): Observable<any> {
   );
 }
 //Cerrar sesion
-cerrarSesion(data: any): Observable<any>{
+cerrarSesion(): Observable<any>{
   let url = `${this.baseUri}/${this.usuarioUri}/logout`
-  return this.http.post(url, data, {withCredentials:true})
-  .pipe(
+  return this.http.get<Response>(url, { withCredentials:true }).pipe(
+    map((res: Response) => {
+      return res || {}
+    }),
     catchError(this.errorMgmt)
-  )
+  );
   
 }
 

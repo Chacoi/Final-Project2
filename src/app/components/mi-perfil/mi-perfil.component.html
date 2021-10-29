@@ -15,10 +15,13 @@
     <div class="row profile-data">
         <div class="col-lg-6 col-12">
             <div class="data">
-                <h4>Discusiones creadas: <b class="number">0</b></h4>
-                <h4>Reputación: <b class="number">0</b></h4>
-                <h4>Participación en la plataforma: <b class="number">0</b></h4>
+                <h4>Discusiones creadas: <b class="number">{{this.totalDiscusiones}}</b></h4>
+                <h4>Comentarios creados: <b class="number">{{this.totalComentarios}}</b></h4>
+                <h4>Puntaje por discusiones: <b class="number">{{this.cantDiscusiones}}</b></h4>
+                <h4>Puntaje por comentarios: <b class="number">{{this.cantComentarios}}</b></h4>
+                
                 <h4 class="mt-5">Logros: </h4>
+                <button class="btn" (click)="updateData()">Actualizar info</button>
             </div>
         </div>
         <div class="col-lg-6 col-12">

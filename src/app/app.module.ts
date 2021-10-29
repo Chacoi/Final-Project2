@@ -19,6 +19,7 @@ import { RegisterComponent } from './components/forms/register/register.componen
 import { NuevoInteresComponent } from './components/nuevo-interes/nuevo-interes.component';
 import { AddDiscusionComponent } from './components/forms/add-discusion/add-discusion.component';
 import { AddResenaComponent } from './components/forms/add-resena/add-resena.component';
+import { UpdateDiscusionComponent } from './components/forms/update-discusion/update-discusion.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'index'},
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path: 'agregar-discusion', component: AddDiscusionComponent},
   {path: 'resena', component: ResenaComponent},
   {path: 'agregar-resena',component: AddResenaComponent},
+  {path: ':id/edit', component: UpdateDiscusionComponent},
   {path: ':id', component: DiscusionComponent}
 ]
 
@@ -50,7 +52,8 @@ const routes: Routes = [
     RegisterComponent,
     NuevoInteresComponent,
     AddDiscusionComponent,
-    AddResenaComponent
+    AddResenaComponent,
+    UpdateDiscusionComponent
   ],
   imports: [
     BrowserModule,
