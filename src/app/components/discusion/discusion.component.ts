@@ -26,6 +26,7 @@ export class DiscusionComponent implements OnInit {
 
   discusion: any;
   comentario: any;
+  data: any;
   ngOnInit(): void {
     let id = this.actRoute.snapshot.paramMap.get('id');
     this.readDiscusion(id);
@@ -77,6 +78,39 @@ export class DiscusionComponent implements OnInit {
     }
   }
 
+  comend(){
+    console.log("comienzo de la funcion comend");
+    this.data = {
+      valoracion: true
+    }
+    let id = this.actRoute.snapshot.paramMap.get('id');
+    this.apiService.valorarDiscusion(id, this.data).subscribe(
+      (res) => {
+        console.log('Valoracion ingresada correctamente');
+        
+        this.redirectTo('/'+ id);
+      }, (error) => {
+        console.log(error);
+      });
+    console.log("fin de la funcion comend")
+  }
+
+  comendComentario(idComentario: any){
+    this.data = {
+      valoracion: true
+    }
+    let id = this.actRoute.snapshot.paramMap.get('id');
+    this.apiService.valorarComentario(idComentario, this.data).subscribe(
+      (res) => {
+        console.log('Valoracion ingresada correctamente');
+        
+        this.redirectTo('/'+ id);
+      }, (error) => {
+        console.log(error);
+      });
+  }
+
+  
   redirectTo(uri:string){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
     this.router.navigate([uri]));

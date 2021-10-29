@@ -19,7 +19,7 @@ export class MisDiscusionesComponent implements OnInit {
 
   readDiscusion(){
     let id = this.actRoute.snapshot.paramMap.get('id');
-    this.apiService.getDiscusiones(id).subscribe((data) => {
+    this.apiService.getDiscusionesByUser().subscribe((data) => {
      console.log(data);
       this.Discusion = data;
 

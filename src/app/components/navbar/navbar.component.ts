@@ -19,6 +19,11 @@ activeUser: any;
       this.activeUser = data;
     });
   }
+  logout(){
+    this.apiService.cerrarSesion().subscribe((data) => {
+      console.log("sesión cerrada correctamente");
+    });
+  }
   ngOnInit(): void {
   }
 

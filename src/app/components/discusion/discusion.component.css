@@ -10,7 +10,8 @@
   background-color: #ffccb3;
   margin-top: 2em;
   padding: 1em;
-  border-radius: 1.6%;
+  border-radius: 1.2%;
+  height: 18.7em;
 }
 .tags {
   border: black solid 2px;
@@ -46,6 +47,8 @@ button {
   background-color: #662200;
   color: blanchedalmond;
   margin-bottom: 1em;
+  margin-left: 2px;
+  font-size: 12px;
 }
 #comment {
   border: black solid 2px;
@@ -55,4 +58,14 @@ button {
 }
 .comment-profile {
   border-right: black;
+}
+.boton-recomendar {
+  align-content: flex-end;
+}
+.row > * {
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+#boton-eliminar {
+  background-color: red;
 }
