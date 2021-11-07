@@ -1,5 +1,11 @@
-<p>{{this.activeUser.username}}</p>
+
   <ul class="nav justify-content-between">
+    <li class="nav-item" *ngIf="this.activeUser.permisos=='admin'">
+      <a class="nav-link active " aria-current="page" href="/user-list">Lista de usuarios</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link nombre-perfil" href="/mi-perfil" tabindex="-1" aria-disabled="true">{{this.activeUser.username}}</a>
+    </li>
     <li class="nav-item">
       <a class="nav-link active" aria-current="page" href="/index">Inicio</a>
     </li>
@@ -12,9 +18,6 @@
     <li class="nav-item">
         <a class="nav-link" href="/lista-resenas">Reseñas</a>
       </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/mi-perfil" tabindex="-1" aria-disabled="true">Mi perfil</a>
-    </li>
     <ng-container *ngIf="!this.activeUser.username">
       <li class="nav-item justify-content-end">
         <a class="nav-link" href="login">Iniciar sesion</a>

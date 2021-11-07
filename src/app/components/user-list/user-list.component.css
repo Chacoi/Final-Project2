@@ -1,0 +1,16 @@
+.tList {
+  border: black solid 2px;
+  padding: 4px;
+  margin: 5px;
+}
+img {
+  width: 100px;
+  height: 100px;
+  padding-right: 4px;
+}
+button {
+  background-color: #662200;
+  color: blanchedalmond;
+  margin-left: 3em;
+  margin-bottom: 1em;
+}

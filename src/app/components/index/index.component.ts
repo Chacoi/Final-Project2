@@ -9,10 +9,11 @@ import { DiscusionService } from 'src/app/services/discusion.service';
 })
 export class IndexComponent implements OnInit {
   Discusion: any = [];
+  DiscusionAll: any;
   activeUser: any;
   constructor(private apiService: DiscusionService, private actRoute: ActivatedRoute) {
     this.getUsuario();
-    
+    this.readDiscusion();
     
    }
 
@@ -20,19 +21,23 @@ export class IndexComponent implements OnInit {
   }
 
   readDiscusion(){
-    console.log("inicio de readDiscusion()")
-    if(this.activeUser.intereses){
-      console.log(this.activeUser.intereses)
-      for(let interes of this.activeUser.intereses){
-        this.apiService.getDiscusionesInteres(interes.nombre).subscribe((data) => {
-          console.log(data);
+    console.log("inicio de readDiscusion()");
+    this.apiService.getDiscusiones().subscribe(data => {
+      this.DiscusionAll = data;
+      console.log(data);
+     });
+    // if(this.activeUser.intereses){
+    //   console.log(this.activeUser.intereses)
+    //   for(let interes of this.activeUser.intereses){
+    //     this.apiService.getDiscusionesInteres(interes.nombre).subscribe((data) => {
+    //       console.log(data);
           
-           this.Discusion.push(data);
-         }) 
-      }
-    }else{
-      console.log("Usted no posee intereses o no está registrado");
-    }
+    //        this.Discusion.push(data);
+    //      }) 
+    //   }
+    // }else{
+    //   console.log("Usted no posee intereses o no está registrado");
+    // }
   }
 
   getUsuario(){

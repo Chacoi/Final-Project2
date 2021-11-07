@@ -10,7 +10,10 @@
                     <h4 class="title-text">{{discusion.titulo}}</h4>
                     <span class="date">{{discusion.autor}}</span>
                     <br>
-                    <span>etiqueta1, etiqueta2, etiqueta3, etiqueta4</span>
+                    <ng-container *ngFor="let interes of discusion.intereses">
+                        <span>{{interes}}, </span>
+                    </ng-container>
+                    
                 </div>
             </div>
             <div class="col-2 justify-content-end subject-body">

@@ -11,6 +11,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 })
 export class DiscusionComponent implements OnInit {
   submitted = false;
+  activeUser: any;
   comentarioForm: FormGroup;
   constructor(private apiService: DiscusionService,
      private actRoute: ActivatedRoute,
@@ -18,6 +19,7 @@ export class DiscusionComponent implements OnInit {
     private router: Router,
     private ngZone: NgZone
      ) {
+      this.getUsuario();
       this.comentarioForm = fb.group({
         title: fb.control('initial value', Validators.required)
     });
@@ -39,13 +41,32 @@ export class DiscusionComponent implements OnInit {
     })
   }
 
-  removeDiscusion(comentario: any, index: any) {
+  eliminarComentario(comentario: any, index: any) {
     if(window.confirm('Are you sure?')) {
         this.apiService.deleteComentario(comentario._id).subscribe((data) => {
           this.comentario.splice(index, 1);
         }
       )    
     }
+  }
+  getUsuario(){
+    this.apiService.getUsuario().subscribe((data) =>{
+      this.activeUser = data;
+      console.log("usuario validado");
+    });
+  }
+  eliminarDiscusion(){
+    console.log("eliminar discusión");
+    let id = this.actRoute.snapshot.paramMap.get('id');
+    this.apiService.deleteDiscusion(id).subscribe((res) => {
+      console.log('Valoracion ingresada correctamente');
+      
+      this.redirectTo('mis-discusiones');
+    }, (error) => {
+      console.log(error);
+    });
+    
+    
   }
 
   mainForm() {
@@ -78,10 +99,10 @@ export class DiscusionComponent implements OnInit {
     }
   }
 
-  comend(){
+  comend(valoracion: Boolean){
     console.log("comienzo de la funcion comend");
     this.data = {
-      valoracion: true
+      valoracion: valoracion
     }
     let id = this.actRoute.snapshot.paramMap.get('id');
     this.apiService.valorarDiscusion(id, this.data).subscribe(
@@ -95,9 +116,9 @@ export class DiscusionComponent implements OnInit {
     console.log("fin de la funcion comend")
   }
 
-  comendComentario(idComentario: any){
+  comendComentario(idComentario: any, valoracion: Boolean){
     this.data = {
-      valoracion: true
+      valoracion: valoracion
     }
     let id = this.actRoute.snapshot.paramMap.get('id');
     this.apiService.valorarComentario(idComentario, this.data).subscribe(
