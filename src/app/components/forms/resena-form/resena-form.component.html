@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form [formGroup]="asignaturaForm" (ngSubmit)="onSubmit()" id="asignaturaForm">
+               <label for="name">Ingrese nombre de la asignatura: </label>
+                <input type="text" id="name" placeholder="nombre asignatura" formControlName="nombre">
+                <label for="key">Ingrese la clave de la asignatura: </label>
+                <input type="text" id="key" placeholder="clave asignatura" formControlName="clave">
+
+                <label for="desc">Ingrese descripción de la asignatura </label>
+                <input type="text" id="desc" placeholder="descripcion asignatura" formControlName="descripcion">                  
+                <button class="btn" type="submit">Enviar</button>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+

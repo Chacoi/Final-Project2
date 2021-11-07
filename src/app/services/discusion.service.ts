@@ -15,6 +15,7 @@ export class DiscusionService {
   comentarioUri: string = 'comentario';
   usuarioUri: string = 'usuario';
   resenaUri: string = 'resena';
+  asignaturaUri: string = 'asignatura';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
@@ -37,8 +38,8 @@ export class DiscusionService {
       )
   }
   //Ver todas las discusiones
-getDiscusiones(id: any){
-  return this.http.get(`${this.baseUri}/${this.discusionUri}/${id}/discusion-list`, { withCredentials:true });
+getDiscusiones(){
+  return this.http.get(`${this.baseUri}/${this.discusionUri}/discusion-list`, { withCredentials:true });
 }
 //Ver discusiones según usuario activo
 getDiscusionesByUser(): Observable<any>{
@@ -133,9 +134,14 @@ getComentariosByUser(): Observable<any>{
   return this.http.get(`${this.baseUri}/${this.comentarioUri}/comentario-user-list`, { withCredentials:true });
 }
 //------------------------------
+
 //----------Usuario------------
+// Ver todos los usuarios
+getUsuarios(): Observable<any>{
+  return this.http.get(`${this.baseUri}/${this.usuarioUri}/user-list`, { withCredentials:true });
+}
  //Crear usuario
- crearUsuario(data: any): Observable<any>{
+crearUsuario(data: any): Observable<any>{
   let url = `${this.baseUri}/${this.usuarioUri}/register`;
   return this.http.post(url, data, {withCredentials:true})
   .pipe(
@@ -143,7 +149,7 @@ getComentariosByUser(): Observable<any>{
   )
 }
  //Verificar usuario
- verificarUsuario(data: any): Observable<any>{
+verificarUsuario(data: any): Observable<any>{
   let url = `${this.baseUri}/${this.usuarioUri}/login`
   return this.http.post(url, data, { withCredentials:true })
   .pipe(
@@ -172,6 +178,19 @@ cerrarSesion(): Observable<any>{
   );
   
 }
+//Cambiar privilegios de usuario
+darPrivilegio(id: any, data: any): Observable<any>{
+  let url = `${this.baseUri}/${this.usuarioUri}/dar-privilegio/${id}`;
+  console.log(data);
+  return this.http.put(url, data, { headers: this.headers, withCredentials:true }).pipe(
+    
+    catchError(this.errorMgmt)
+  )
+}
+//Iniciar sesión con facebook
+facebookAuth(): Observable<any> {
+  return this.http.get(`${this.baseUri}/auth/facebook`, { withCredentials:true });
+}
 
 //-----Interes-----
 //Agregar interes
@@ -198,6 +217,48 @@ interesDiscusion(data: any): Observable<any>{
     )
 }
 //----------------------------
+
+//----Asignaturas-reseñas----
+// Crear Asignatura
+crearAsignatura(data: any): Observable<any> {
+  let url = `${this.baseUri}/${this.asignaturaUri}/asignatura-create`;
+  return this.http.post(url, data, { withCredentials:true })
+    .pipe(
+      catchError(this.errorMgmt)
+    )
+}
+
+//Ver todas las asignaturas
+getAsignaturas(){
+  return this.http.get(`${this.baseUri}/${this.asignaturaUri}/asignatura-list`, { withCredentials:true });
+}
+
+// Get asignatura
+getAsignatura(id: any): Observable<any> {
+  let url = `${this.baseUri}/${this.asignaturaUri}/asignatura-read/${id}`;
+  return this.http.get<Response>(url, {headers: this.headers, withCredentials:true}, ).pipe(
+    map((res: Response) => {
+      return res || {}
+    }),
+    catchError(this.errorMgmt)
+  )
+}
+
+ // Update asignatura
+ updateAsignatura(id: any, data: any): Observable<any> {
+  let url = `${this.baseUri}/${this.asignaturaUri}/asignatura-update/${id}`;
+  return this.http.put(url, data, { headers: this.headers, withCredentials:true }).pipe(
+    catchError(this.errorMgmt)
+  )
+}
+
+ // Delete asignatura
+ deleteAsignatura(id: any): Observable<any> {
+  let url = `${this.baseUri}/${this.asignaturaUri}/asignatura-delete/${id}`;
+  return this.http.delete(url, { headers: this.headers, withCredentials:true }).pipe(
+    catchError(this.errorMgmt)
+  )
+}
   // Get all comunidades
   getComunidades() {
     return this.http.get(`${this.baseUri}/${this.comunidadUri}`, {withCredentials: true});

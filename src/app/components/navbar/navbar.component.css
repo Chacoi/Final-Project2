@@ -1,6 +1,9 @@
 .nav {
   background-color: #ff9933;
 }
+.nombre-perfil {
+  color: blanchedalmond;
+}
 a {
   color: black;
   font-size: 1.2em;

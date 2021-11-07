@@ -3,6 +3,7 @@ import { DiscusionService} from '../../../services/discusion.service'
 import { Component, OnInit, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute } from '@angular/router';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login-form',
@@ -62,13 +63,23 @@ export class LoginFormComponent implements OnInit {
       this.apiService.verificarUsuario(this.usuarioForm.value).subscribe(
         (res) => {
           console.log('Usuario encontrado!')
+          delay(1000);
+          this.redirectTo('/mis-discusiones');
           
-          this.router.navigateByUrl('/mis-discusiones');
         }, (error) => {
           console.log(error);
         });
         return true;
     }
   }
+  facebookAuth(){
+    this.apiService.facebookAuth().subscribe(data => {
+      console.log(data);
+    })
+  }
+  redirectTo(uri:string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([uri]));
+ }
  
 }

@@ -7,7 +7,7 @@ import { DiscusionService } from 'src/app/services/discusion.service';
   styleUrls: ['./mi-perfil.component.less']
 })
 export class MiPerfilComponent implements OnInit {
-
+  activeUser: any;
   
   constructor(private apiService: DiscusionService,
     private actRoute: ActivatedRoute,
@@ -15,7 +15,7 @@ export class MiPerfilComponent implements OnInit {
    private ngZone: NgZone) {
     
     this.updateData();
-
+    this.getUsuario();
     }
     cantDiscusiones: Number | undefined;
     cantComentarios: Number | undefined;
@@ -23,7 +23,13 @@ export class MiPerfilComponent implements OnInit {
     totalComentarios: Number| undefined;
   ngOnInit(): void {
   }
-
+  getUsuario(){
+    console.log("get-usuario 1")
+    this.apiService.getUsuario().subscribe((data) =>{
+      console.log(data);
+      this.activeUser = data;
+    });
+  }
   updateData(){
     this.apiService.countDiscusiones().subscribe( data => {
       this.cantDiscusiones = data.length;

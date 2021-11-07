@@ -20,6 +20,8 @@ import { NuevoInteresComponent } from './components/nuevo-interes/nuevo-interes.
 import { AddDiscusionComponent } from './components/forms/add-discusion/add-discusion.component';
 import { AddResenaComponent } from './components/forms/add-resena/add-resena.component';
 import { UpdateDiscusionComponent } from './components/forms/update-discusion/update-discusion.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { ResenaFormComponent } from './components/forms/resena-form/resena-form.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'index'},
@@ -35,6 +37,8 @@ const routes: Routes = [
   {path: 'resena', component: ResenaComponent},
   {path: 'agregar-resena',component: AddResenaComponent},
   {path: ':id/edit', component: UpdateDiscusionComponent},
+  {path: 'user-list', component: UserListComponent},
+  {path: 'resena-form', component: ResenaFormComponent},
   {path: ':id', component: DiscusionComponent}
 ]
 
@@ -53,7 +57,9 @@ const routes: Routes = [
     NuevoInteresComponent,
     AddDiscusionComponent,
     AddResenaComponent,
-    UpdateDiscusionComponent
+    UpdateDiscusionComponent,
+    UserListComponent,
+    ResenaFormComponent
   ],
   imports: [
     BrowserModule,
