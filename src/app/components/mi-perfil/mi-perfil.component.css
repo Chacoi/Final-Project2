@@ -26,6 +26,12 @@
   margin-top: 2em;
   border: #662200 solid 3px;
 }
+.medalla {
+  height: 140px;
+  width: 140px;
+  margin-left: 1em;
+  margin-top: 1em;
+}
 h2 {
   color: #331400;
 }

@@ -17,10 +17,15 @@ export class MiPerfilComponent implements OnInit {
     this.updateData();
     this.getUsuario();
     }
-    cantDiscusiones: Number | undefined;
-    cantComentarios: Number | undefined;
-    totalDiscusiones: Number| undefined;
-    totalComentarios: Number| undefined;
+    comendsDiscusiones: Number = 0;
+    comendsComentarios: Number = 0;
+    totalDiscusiones: Number= 0;
+    totalComentarios: Number= 0;
+    userScore:  Number= 0;
+    puntajeCommends: Number= 0;
+    puntajeCantidad: Number= 0;
+    score: Number= 0;
+    medalla: String | undefined;
   ngOnInit(): void {
   }
   getUsuario(){
@@ -32,10 +37,10 @@ export class MiPerfilComponent implements OnInit {
   }
   updateData(){
     this.apiService.countDiscusiones().subscribe( data => {
-      this.cantDiscusiones = data.length;
+      this.comendsDiscusiones = data.length;
     })
     this.apiService.countComentarios().subscribe(data => {
-      this.cantComentarios = data.length;
+      this.comendsComentarios = data.length;
     })
     this.apiService.getDiscusionesByUser().subscribe(data => {
       this.totalDiscusiones = data.length;
@@ -43,5 +48,41 @@ export class MiPerfilComponent implements OnInit {
     this.apiService.getComentariosByUser().subscribe(data =>{
       this.totalComentarios = data.length;
     })
+
+  this.puntajeCommends = this.comendsDiscusiones!.valueOf() + this.comendsDiscusiones!.valueOf()
+  this.puntajeCommends = this.puntajeCommends!.valueOf() * 2;
+  this.puntajeCantidad = this.totalDiscusiones!.valueOf() + this.totalComentarios!.valueOf();
+  //this.score = this.puntajeCantidad!.valueOf() + this.puntajeCommends!.valueOf();
+    
+    if(this.score>=50&&this.score<250){
+      this.medalla = "../../../../assets/medalla1.png"
+    }
+    if(this.score>=250&&this.score<500){
+      this.medalla = "../../../../assets/medalla2.png"
+    }
+    if(this.score>=500&&this.score<1000){
+      this.medalla = "../../../../assets/medalla3.png"
+    }
+    if(this.score>=1000&&this.score<1500){
+      this.medalla = "../../../../assets/medalla4.png"
+    }
+    if(this.score>=1500&&this.score<3000){
+      this.medalla = "../../../../assets/medalla5.png"
+    }
+    if(this.score>=3000){
+      this.medalla = "../../../../assets/medalla6.png"
+    }
   }
+
+  
+  
+/*
+  50ptos = medalla 1
+  250ptos = medalla 2
+  500ptos = medalla 3
+  1000ptos = medalla 4
+  1500ptos = medalla 5
+  3000ptos = medalla 6
+  */
+  
 }

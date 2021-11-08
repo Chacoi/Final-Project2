@@ -1,9 +1,9 @@
 <div class="container">
     <div class="profile row">
         <div class="col-lg-3 col-12">
-            <img id="imagen-perfil" src="https://images.unsplash.com/photo-1593642532781-03e79bf5bec2?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
-        </div>
-        <div class="col-lg-7 col-12">
+<img src="../../../assets/branimir-balogovic-yY66QAbGxq4-unsplash.jpg" id="imagen-perfil" alt="">        </div>
+<!-- ../../../assets/branimir-balogovic-yY66QAbGxq4-unsplash.jpg -->
+<div class="col-lg-7 col-12">
             <h3 class="mt-5 username">{{this.activeUser.username}}</h3>
             <h3><i>{{this.activeUser.email}}</i></h3>
            
@@ -17,9 +17,9 @@
             <div class="data">
                 <h4>Discusiones creadas: <b class="number">{{this.totalDiscusiones}}</b></h4>
                 <h4>Comentarios creados: <b class="number">{{this.totalComentarios}}</b></h4>
-                <h4>Puntaje por discusiones: <b class="number">{{this.cantDiscusiones}}</b></h4>
-                <h4>Puntaje por comentarios: <b class="number">{{this.cantComentarios}}</b></h4>
-                
+                <h4>Comends por discusiones: <b class="number">{{this.comendsDiscusiones}}</b></h4>
+                <h4>Comends por comentarios: <b class="number">{{this.comendsComentarios}}</b></h4>
+                <h4>Puntaje total usuario: <b class="number">{{this.score}}</b></h4>
                 <h4 class="mt-5">Logros: </h4>
                 <button class="btn" (click)="updateData()">Actualizar info</button>
             </div>
@@ -27,9 +27,10 @@
         <div class="col-lg-6 col-12">
             <div class="data emblema">
                 <h4>Tu emblema:</h4>
+
             </div>
             <div class="emblema-icon">
-                
+                <img [src]="this.medalla" class="medalla" alt="">
             </div>
         </div>
     </div>

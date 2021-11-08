@@ -90,7 +90,7 @@ countDiscusiones(): Observable<any> {
 }
 //-----------------------------
 //---------Comentario--------------
- // Get comentario
+// Get comentario
  getComentario(id: any): Observable<any> {
   let url = `${this.baseUri}/${this.comentarioUri}/comentario-read/${id}`;
   return this.http.get<Response>(url, {headers: this.headers, withCredentials:true}).pipe(
@@ -100,7 +100,7 @@ countDiscusiones(): Observable<any> {
     catchError(this.errorMgmt)
   )
 }
-    // Delete comentario
+// Delete comentario
 deleteComentario(id: any): Observable<any> {
       let url = `${this.baseUri}/${this.comentarioUri}/comentario-delete/${id}`;
       return this.http.delete(url, { headers: this.headers, withCredentials:true }).pipe(
@@ -166,6 +166,13 @@ getUsuario(): Observable<any> {
     }),
     catchError(this.errorMgmt)
   );
+}
+//Eliminar usuario
+deleteUsuario(id: any): Observable<any> {
+  let url = `${this.baseUri}/${this.usuarioUri}/usuario-delete/${id}`;
+  return this.http.delete(url, { headers: this.headers, withCredentials:true }).pipe(
+    catchError(this.errorMgmt)
+  )
 }
 //Cerrar sesion
 cerrarSesion(): Observable<any>{

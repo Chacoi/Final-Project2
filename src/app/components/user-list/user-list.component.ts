@@ -48,6 +48,13 @@ export class UserListComponent implements OnInit {
       this.redirectTo('/user-list');
     });
   }
+  eliminarUsuario(id: any){
+    console.log(id);
+     this.apiService.deleteUsuario(id).subscribe(data => {
+       console.log(data);
+     })
+    this.redirectTo("/user-list");
+  }
 
   redirectTo(uri:string){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>

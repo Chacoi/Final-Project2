@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class RegisterComponent implements OnInit {  
   submitted = false;
   usuarioForm: FormGroup;
+  selectedFile!: File;
 
   constructor(
     public fb: FormBuilder,
@@ -37,11 +38,15 @@ export class RegisterComponent implements OnInit {
     this.usuarioForm = this.fb.group({
       email: ['', [Validators.required]],
       username: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required]],
+      image: ['', [Validators.required]]
     })
     
   }
 
+   onFileSelected(event: any){
+     this.selectedFile = <File>event.target.files[0];
+   }
   // Choose designation with select dropdown
   updateProfile(e: any){
     this.usuarioForm.get('designation')?.setValue(e, {
@@ -59,6 +64,7 @@ export class RegisterComponent implements OnInit {
     if (!this.usuarioForm.valid) {
       return false;
     } else {
+      this.usuarioForm.value.image = this.selectedFile;
       this.apiService.crearUsuario(this.usuarioForm.value).subscribe(
         (res) => {
           console.log('Usuario creado correctamente!')

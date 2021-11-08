@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="col-9 subject-body d-inline-flex">
-                    <button class="btn">Eliminar</button>
+                    <button class="btn" (click)="eliminarUsuario(usuario._id)">Eliminar</button>
                     <button class="btn" (click)="darModerador(usuario._id)">Dar moderador</button>
                     <button class="btn mr-2" (click)="darEstudiante(usuario._id)">Dar estudiante</button>
 
