@@ -34,11 +34,11 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'nuevo-interes', component: NuevoInteresComponent},
   {path: 'agregar-discusion', component: AddDiscusionComponent},
-  {path: 'resena', component: ResenaComponent},
   {path: 'agregar-resena',component: AddResenaComponent},
   {path: ':id/edit', component: UpdateDiscusionComponent},
   {path: 'user-list', component: UserListComponent},
   {path: 'resena-form', component: ResenaFormComponent},
+  {path: 'resena/:id', component: ResenaComponent},
   {path: ':id', component: DiscusionComponent}
 ]
 

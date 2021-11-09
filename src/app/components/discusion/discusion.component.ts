@@ -87,7 +87,7 @@ export class DiscusionComponent implements OnInit {
     } else {
       let id = this.actRoute.snapshot.paramMap.get('id');
       console.log(id);
-      this.apiService.crearComentario(this.comentarioForm.value, id).subscribe(
+      this.apiService.crearComentario(this.comentarioForm.value, id, 'discusion').subscribe(
         (res) => {
           console.log('Employee successfully created!')
           

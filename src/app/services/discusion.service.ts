@@ -108,8 +108,8 @@ deleteComentario(id: any): Observable<any> {
       )
     }
 //Crear Comentario
-crearComentario(data: any, id:any): Observable<any>{
-  let url = `${this.baseUri}/${this.comentarioUri}/${id}/comentario-create`;
+crearComentario(data: any, id:any, ubi: String): Observable<any>{
+  let url = `${this.baseUri}/${this.comentarioUri}/${id}/comentario-create/${ubi}`;
   return this.http.post(url, data, {withCredentials:true})
     .pipe(
       catchError(this.errorMgmt)

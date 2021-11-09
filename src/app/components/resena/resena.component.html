@@ -6,27 +6,45 @@
             <img src="https://images.unsplash.com/photo-1538137518296-2b8f90394f04?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDR8NnNNVmpUTFNrZVF8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
         </div>
         <div class="col-lg-8">
-            <h5> Nombre: ING9004-14</h5>
-            <h5>Descripción: </h5>
+            <h5> Nombre: {{this.asignatura.nombre}}</h5>
+            <h5>Descripción:{{this.asignatura.descripcion}}</h5>
             <h5>Profesor(a) a cargo:</h5>
-            <h5>Puntuación: </h5>
+            <h5>Puntuación: pendiente</h5>
         </div>
         <div class="col-lg-1"></div>
     </div>
     <div class="container input-comentario">
-        <form action="">
-            <textarea name="resena" id="" cols="30" rows="10" placeholder="Escribir reseña..."> </textarea>
+        
+        <form [formGroup]="comentarioForm" (ngSubmit)="onSubmit()">
+            <fieldset class="starability-basic">
+                <legend>First rating:</legend>
+                <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+                <input type="radio" id="first-rate1" formControlName="rating" name="rating" value="1" />
+                <label for="first-rate1" title="Terrible">1 star</label>
+                <input type="radio" id="first-rate2" formControlName="rating" name="rating" value="2" />
+                <label for="first-rate2" title="Not good">2 stars</label>
+                <input type="radio" id="first-rate3" formControlName="rating" name="rating" value="3" />
+                <label for="first-rate3" title="Average">3 stars</label>
+                <input type="radio" id="first-rate4" formControlName="rating" name="rating" value="4" />
+                <label for="first-rate4" title="Very good">4 stars</label>
+                <input type="radio" id="first-rate5" formControlName="rating" name="rating" value="5" />
+                <label for="first-rate5" title="Amazing">5 stars</label>
+              </fieldset>
+            <textarea name="resena" id="" cols="30" rows="10" formControlName="comentario"> </textarea>
             <button class="btn btn-success">Enviar comentario</button>
         </form>
         
     </div>
-    <div id="comment" class="row">
-        <div class="col-lg-3">
-            <img src="https://images.unsplash.com/photo-1631096207334-5a250b246a0c?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
-            <span>User2314</span>
+    <ng-container *ngFor="let comentario of this.asignatura.comentarios">   
+        <div id="comment" class="row">
+            <div class="col-lg-3">
+                <img src="https://images.unsplash.com/photo-1631096207334-5a250b246a0c?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+                <span>{{comentario.autor}}</span>
+            </div>
+            <p class="starability-result" [attr.data-rating]="comentario.rate"></p>
+            <div class="col-lg-9">
+                <p>{{comentario.comentario}}</p>
+            </div>
         </div>
-        <div class="col-lg-9">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et blanditiis, eius suscipit odio qui molestias laborum facilis impedit maiores accusamus omnis? Deserunt unde eum quidem nihil obcaecati culpa quo error?</p>
-        </div>
-    </div>
+    </ng-container>
 </div>
