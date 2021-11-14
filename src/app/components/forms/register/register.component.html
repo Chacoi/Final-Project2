@@ -2,51 +2,65 @@
     <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6">
-                <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+                <form [formGroup]="usuarioForm" 
+                (ngSubmit)="onSubmit()" 
+                  enctype="multipart/form-data" 
+                  file-model="myFiles($files)">
+                  
                     <div class="form-group">
-                        <label for="inputUsername">Ingrese su email: </label>
+                        <label for="email">Ingrese su email: </label>
                         <input 
                         class="form-control" 
                         type="text" 
                         formControlName="email" 
-                        placeholder="email">
+                        placeholder="email"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                         <!-- error -->
-                        <div class="invalid-feedback" *ngIf="submitted && myForm.email.errors?.required">
-                          email is required.
+                        <div class="alert alert-danger" *ngIf="email?.touched && email?.invalid">
+                          <div *ngIf="email?.errors?.required">Su correo institucional es requerido.</div>
+                          <div *ngIf="email?.errors?.cantContainSpace">Su correo no puede contener espacios.</div>
+                          <div [hidden]="!email?.errors?.pattern">
+                            Formato de email incorrecto, siga el ejemplo xxxx@xxxx.xxx
+                          </div> 
                         </div>
+                      
                     </div>
 
                     <div class="form-group">
-                      <label for="inputUsername">Nombre de usuario: </label>
+                      <label for="username">Nombre de usuario: </label>
                       <input 
                       class="form-control" 
                       type="text" 
                       formControlName="username"
                       placeholder="nombre de usuario">
                       <!-- error -->
-                      <div class="invalid-feedback" *ngIf="submitted && myForm.username.errors?.required">
-                        Username is required.
-                      </div>
+                      <div class="alert alert-danger" *ngIf="username?.touched && username?.invalid">
+                        <div *ngIf="username?.errors?.required">El nombre de usuario es requerido.</div>
+                        <div *ngIf="username?.errors?.minlength">El nombre de usuario debe tener al menos 5 caracteres.</div>
+                        <div *ngIf="username?.errors?.cantContainSpace">El nombre de usuario no puede contener espacios.</div>
+                        <!--<div *ngIf="username?.errors?.isUnique">This username isn't available</div>-->
+                    </div>
                     </div>
                     
                     <div class="form-group">
-                      <label for="inputPassword">Contraseña: </label>
+                      <label for="password">Contraseña: </label>
                       <input 
                       class="form-control" 
                       type="text" 
                       formControlName="password"
                       placeholder="contraseña">
                       <!-- error -->
-                      <div class="invalid-feedback" *ngIf="submitted && myForm.password.errors?.required">
-                        Password is required.
+                      <div class="alert alert-danger" *ngIf="password?.touched && password?.invalid">
+                        <div *ngIf="password?.errors?.required">La contrasena es requerida.</div>
+                        <div *ngIf="password?.errors?.minlength">La contrasena debe contener al menos 8 caracteres.</div>
                       </div>
                     </div>
-            
                     <div class="form-group">
                       <label for="inputImage">Imagen de perfil: </label>
-                      <input type="file"
+                      <input 
+                      type="file"
+                      name="image"
                       class="form-control"
-                      formControlName="image"
                       (change)="onFileSelected($event)"
                       >
                       <!-- "<button class="btn btn-success" type="button" (click)="onUpload()">Subir Imagen</button> -->

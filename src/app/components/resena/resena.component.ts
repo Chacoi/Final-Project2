@@ -12,6 +12,7 @@ export class ResenaComponent implements OnInit {
   activeUser: any;
   comentario: any;
   asignatura: any;
+  puntuacion: any;
   comentarioForm: FormGroup;
   constructor(private apiService: DiscusionService,
     private actRoute: ActivatedRoute,private router: Router,
@@ -28,9 +29,17 @@ export class ResenaComponent implements OnInit {
   }
   readAsignatura(id: any){
     this.apiService.getAsignatura(id).subscribe( data => {
+      let sum = 0;
       this.asignatura = data;
       console.log(data);
+      this.asignatura.comentarios.forEach((element: { rate: number; }) => {
+        sum = element.rate + sum;
+        console.log(element.rate)
+      });
+      this.puntuacion = sum/this.asignatura.comentarios.length;
+      console.log("Largo comentarios:" + this.asignatura.comentarios.length + sum);
     })
+
   }
   mainForm() {
     this.comentarioForm = this.fb.group({

@@ -30,13 +30,13 @@
         </div>
     </div>
     <div class="tags">
-        <li class=" d-inline-flex">
-            <ul class="tag"><b>etiqueta1</b> </ul>
-            <ul class="tag"><b>etiqueta2</b></ul>
-            <ul class="tag"><b>etiqueta3</b></ul>
-        </li>
+        <ng-container *ngFor="let interes of discusion.intereses">
+        <div class=" d-inline-flex">
+            <p class="tag"><b>{{interes}}</b> </p>
+        </div>
+    </ng-container>
     </div>
-    <ng-container *ngIf="this.activeUser._id==discusion.idAutor">
+    <ng-container *ngIf="this.activeUser._id">
     <div class="container form">
         <form [formGroup]="comentarioForm" (ngSubmit)="onSubmit()">
             <textarea name="comentario" id="comentario" cols="30" rows="10" formControlName="comentario">Escribir comentario</textarea>

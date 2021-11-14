@@ -34,5 +34,11 @@ export class MisDiscusionesComponent implements OnInit {
       )    
     }
   }
-
+  
+  getFecha(fecha: String): String {
+    let dia = fecha.charAt(8) + fecha.charAt(9);
+    let mes = fecha.charAt(5) + fecha.charAt(6);
+    let anho = fecha.charAt(0) + fecha.charAt(1) + fecha.charAt(2) + fecha.charAt(3)
+    return dia + '-' +  mes + '-' + anho;
+  }
 }

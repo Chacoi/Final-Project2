@@ -270,6 +270,15 @@ getAsignatura(id: any): Observable<any> {
   getComunidades() {
     return this.http.get(`${this.baseUri}/${this.comunidadUri}`, {withCredentials: true});
   }
+
+
+  setFile(file: any){
+    let url = `${this.baseUri}/${this.usuarioUri}/file`;
+    this.http.post<any>(url, file, { withCredentials:true }).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
+  }
   // // Get comunidad
   // getComunidad(id: any): Observable<any> {
   //   let url = `${this.baseUri}/${this.comunidadUri}/comunidad-read/${id}`;

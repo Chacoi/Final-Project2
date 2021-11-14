@@ -1,4 +1,4 @@
-.nav {
+nav {
   background-color: #ff9933;
 }
 .nombre-perfil {
@@ -7,4 +7,7 @@
 a {
   color: black;
   font-size: 1.2em;
+}
+navbar-elements {
+  display: block;
 }

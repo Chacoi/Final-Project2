@@ -9,12 +9,12 @@
             <h5> Nombre: {{this.asignatura.nombre}}</h5>
             <h5>Descripción:{{this.asignatura.descripcion}}</h5>
             <h5>Profesor(a) a cargo:</h5>
-            <h5>Puntuación: pendiente</h5>
+            <h5>Puntuación: {{this.puntuacion}}</h5>
         </div>
         <div class="col-lg-1"></div>
     </div>
     <div class="container input-comentario">
-        
+        <ng-container *ngIf="this.activeUser._id">
         <form [formGroup]="comentarioForm" (ngSubmit)="onSubmit()">
             <fieldset class="starability-basic">
                 <legend>First rating:</legend>
@@ -33,7 +33,7 @@
             <textarea name="resena" id="" cols="30" rows="10" formControlName="comentario"> </textarea>
             <button class="btn btn-success">Enviar comentario</button>
         </form>
-        
+    </ng-container>
     </div>
     <ng-container *ngFor="let comentario of this.asignatura.comentarios">   
         <div id="comment" class="row">

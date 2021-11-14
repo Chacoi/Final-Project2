@@ -37,7 +37,7 @@ export class MiPerfilComponent implements OnInit {
   }
   updateData(){
     this.apiService.countDiscusiones().subscribe( data => {
-      this.comendsDiscusiones = data.length;
+      this.comendsDiscusiones = data;
     })
     this.apiService.countComentarios().subscribe(data => {
       this.comendsComentarios = data.length;
@@ -52,8 +52,8 @@ export class MiPerfilComponent implements OnInit {
   this.puntajeCommends = this.comendsDiscusiones!.valueOf() + this.comendsDiscusiones!.valueOf()
   this.puntajeCommends = this.puntajeCommends!.valueOf() * 2;
   this.puntajeCantidad = this.totalDiscusiones!.valueOf() + this.totalComentarios!.valueOf();
-  //this.score = this.puntajeCantidad!.valueOf() + this.puntajeCommends!.valueOf();
-    
+  this.score = this.puntajeCantidad!.valueOf() + this.puntajeCommends!.valueOf();
+
     if(this.score>=50&&this.score<250){
       this.medalla = "../../../../assets/medalla1.png"
     }
