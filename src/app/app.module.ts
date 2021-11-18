@@ -22,6 +22,11 @@ import { AddResenaComponent } from './components/forms/add-resena/add-resena.com
 import { UpdateDiscusionComponent } from './components/forms/update-discusion/update-discusion.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { ResenaFormComponent } from './components/forms/resena-form/resena-form.component';
+import { ListaInteresesComponent } from './components/lista-intereses/lista-intereses.component';
+import { AddInteresComponent } from './components/forms/add-interes/add-interes.component';
+import { EditUsuarioComponent } from './components/forms/edit-usuario/edit-usuario.component';
+import { MedalsInfoComponent } from './components/medals-info/medals-info.component';
+import { BackComponent } from './components/back/back.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'index'},
@@ -39,6 +44,9 @@ const routes: Routes = [
   {path: 'user-list', component: UserListComponent},
   {path: 'resena-form', component: ResenaFormComponent},
   {path: 'resena/:id', component: ResenaComponent},
+  {path: 'crear-interes', component: AddInteresComponent},
+  {path: 'usuario-edit', component: EditUsuarioComponent},
+  {path: 'medals-info', component: MedalsInfoComponent},
   {path: ':id', component: DiscusionComponent}
 ]
 
@@ -59,7 +67,12 @@ const routes: Routes = [
     AddResenaComponent,
     UpdateDiscusionComponent,
     UserListComponent,
-    ResenaFormComponent
+    ResenaFormComponent,
+    ListaInteresesComponent,
+    AddInteresComponent,
+    EditUsuarioComponent,
+    MedalsInfoComponent,
+    BackComponent
   ],
   imports: [
     BrowserModule,

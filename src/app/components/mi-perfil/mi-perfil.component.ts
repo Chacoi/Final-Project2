@@ -17,14 +17,11 @@ export class MiPerfilComponent implements OnInit {
     this.updateData();
     this.getUsuario();
     }
-    comendsDiscusiones: Number = 0;
-    comendsComentarios: Number = 0;
-    totalDiscusiones: Number= 0;
-    totalComentarios: Number= 0;
-    userScore:  Number= 0;
-    puntajeCommends: Number= 0;
-    puntajeCantidad: Number= 0;
-    score: Number= 0;
+    comendsDiscusiones: number = 0;
+    comendsComentarios: number = 0;
+    totalDiscusiones: number= 0;
+    totalComentarios: number= 0;
+    score: number= 0;
     medalla: String | undefined;
   ngOnInit(): void {
   }
@@ -38,22 +35,24 @@ export class MiPerfilComponent implements OnInit {
   updateData(){
     this.apiService.countDiscusiones().subscribe( data => {
       this.comendsDiscusiones = data;
+      this.apiService.countComentarios().subscribe(data => {
+        this.comendsComentarios = data;
+        this.apiService.getDiscusionesByUser().subscribe(data => {
+          this.totalDiscusiones = data.length;
+          this.apiService.getComentariosByUser().subscribe(data =>{
+            this.totalComentarios = data.length;
+            this.score = (this.comendsDiscusiones * 1.8) + this.totalDiscusiones;
+            console.log(this.score);
+            this.score = (this.comendsComentarios * 1.2) + this.totalComentarios + this.score;
+            console.log(this.score)
+          })  
+        })  
+      })
     })
-    this.apiService.countComentarios().subscribe(data => {
-      this.comendsComentarios = data.length;
-    })
-    this.apiService.getDiscusionesByUser().subscribe(data => {
-      this.totalDiscusiones = data.length;
-    })
-    this.apiService.getComentariosByUser().subscribe(data =>{
-      this.totalComentarios = data.length;
-    })
-
-  this.puntajeCommends = this.comendsDiscusiones!.valueOf() + this.comendsDiscusiones!.valueOf()
-  this.puntajeCommends = this.puntajeCommends!.valueOf() * 2;
-  this.puntajeCantidad = this.totalDiscusiones!.valueOf() + this.totalComentarios!.valueOf();
-  this.score = this.puntajeCantidad!.valueOf() + this.puntajeCommends!.valueOf();
-
+    
+    
+  
+ 
     if(this.score>=50&&this.score<250){
       this.medalla = "../../../../assets/medalla1.png"
     }

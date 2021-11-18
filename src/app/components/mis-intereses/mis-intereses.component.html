@@ -1,15 +1,12 @@
 <div class="container mis-intereses">
-    <form class="d-flex search">
-        <input class="form-control me-2 search-bar" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-    <button class="btn btn-success mt-3" routerLink="/nuevo-interes">Agregar Nuevo tema de interés</button>
+    
+    <button class="btn btn-success mt-3" routerLink="/nuevo-interes">Todos los intereses</button>
+    
     <div class="row cards mt-2">
     <ng-container *ngFor="let interes of this.activeUser.intereses">
-     
         <div class="col-lg-4 col-md-9 ">
             <div class="card" style="width: 18rem;">
-                <img src="../../../assets/descarga.jpg" class="card-img-top" alt="...">
+                <img [attr.src]="interes.imagen" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{interes.nombre}}</h5>
                   <p class="card-text">{{interes.descripcion}}</p>

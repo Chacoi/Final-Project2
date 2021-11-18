@@ -1,38 +1,35 @@
 <div class="container">
-    <div class="row">
+    <div class="row" id="encabezado">
         <div class="col-lg-3 pl-1">
-            <div class="profile-icon">
+            <div class="profile-icon ">
                 <img id="profile-img"src="https://images.unsplash.com/photo-1631096207334-5a250b246a0c?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
-                <br>
+                
                 <span id="username"><b>{{discusion.autor}}</b></span>
+                <div class="botones mt-3">
+                    <button class="btn boton-recomendar p-2" (click)="comend(true)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                        </svg>
+                          Recomendar
+                    </button>
+                    <ng-container *ngIf="this.activeUser._id==discusion.idAutor||this.activeUser.permisos=='admin'||this.activeUser.permisos=='moderador'">
+                        <button class="btn btn-success" [routerLink]="['edit']">Editar discusión</button>
+                        <button class="btn" id="boton-eliminar" (click)="eliminarDiscusion()">Eliminar discusión</button>
+                    </ng-container>
+                   </div>
             </div>
         </div>
         <div class="col-lg-9">
             <div class="content d-flex align-items-start flex-column">
-                
                     <p class="mb-auto p-2">{{discusion.contenido}}</p>
-               <div class="botones">
-                <button class="btn boton-recomendar p-2" (click)="comend(true)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                        <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-                    </svg>
-                      Recomendar
-                </button>
-                <ng-container *ngIf="this.activeUser._id==discusion.idAutor||this.activeUser.permisos=='admin'||this.activeUser.permisos=='moderador'">
-                    <button class="btn btn-success" [routerLink]="['edit']">Editar discusión</button>
-                    <button class="btn" id="boton-eliminar" (click)="eliminarDiscusion()">Eliminar discusión</button>
-                </ng-container>
-               </div>
             </div>
-            
-            
         </div>
     </div>
     <div class="tags">
         <ng-container *ngFor="let interes of discusion.intereses">
         <div class=" d-inline-flex">
-            <p class="tag"><b>{{interes}}</b> </p>
+            <span class="pt-3">Etiquetas de interés: </span><p class="tag"><b> {{interes}}</b> </p>
         </div>
     </ng-container>
     </div>
@@ -40,20 +37,24 @@
     <div class="container form">
         <form [formGroup]="comentarioForm" (ngSubmit)="onSubmit()">
             <textarea name="comentario" id="comentario" cols="30" rows="10" formControlName="comentario">Escribir comentario</textarea>
-            <button class="btn" type="submit">Enviar</button>
+            <button class="btn" type="submit">Enviar comentario</button>
         </form>
     </div>
     </ng-container>
     <ng-container *ngFor="let comentario of discusion.comentarios; let i=index">
         <div id="comment" class="row">
-            <div class="col-lg-3 ">
+            <div class="col-3 ">
                 <img id ="comment-img"src="https://images.unsplash.com/photo-1631096207334-5a250b246a0c?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
-                <span>{{comentario.autor}}</span>
+                <span class="ml-2">{{comentario.autor}}</span>
+                <br>
+                <button class="btn mt-2" (click)=onDelete(comentario._id)>Eliminar</button>
+                <button class="btn" (click)="comendComentario(comentario._id, true)">Recomendar comentario</button>
             </div>
-            <div class="col-lg-9">
-                <p>{{comentario.comentario}}</p>
+            <div class="col-9">
+                <p> <b>{{comentario.comentario}} </b></p>
+                <p id="fecha"> <i> Subido el: {{getFecha(comentario.fecha)}} </i></p>
             </div>
-            <button class="btn" (click)="comendComentario(comentario._id, true)">Recomendar comentario</button>
+            
         </div>
     </ng-container>
     

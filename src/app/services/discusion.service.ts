@@ -16,6 +16,7 @@ export class DiscusionService {
   usuarioUri: string = 'usuario';
   resenaUri: string = 'resena';
   asignaturaUri: string = 'asignatura';
+  interesUri: string = 'interes';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
@@ -198,9 +199,17 @@ darPrivilegio(id: any, data: any): Observable<any>{
 facebookAuth(): Observable<any> {
   return this.http.get(`${this.baseUri}/auth/facebook`, { withCredentials:true });
 }
+//Actualizar datos usuario
+updateUsuario( data: any): Observable<any>{
+  let url = `${this.baseUri}/${this.usuarioUri}/usuario-update`;
+  return this.http.put(url, data, { headers: this.headers, withCredentials:true }).pipe(
+    catchError(this.errorMgmt)
+  )
+}
 
 //-----Interes-----
-//Agregar interes
+
+//Agregar interes a usuario
 agregarInteres(data: any): Observable<any>{
   let url = `${this.baseUri}/${this.usuarioUri}/interes-add`;
   return this.http.post(url, data, {withCredentials:true})
@@ -209,19 +218,51 @@ agregarInteres(data: any): Observable<any>{
     )
 }
 
-eliminarInteres(id: any): Observable<any>{
-  let url = `${this.baseUri}/${this.usuarioUri}/interes-delete/${id}`;
+//Eliminar interes de usuario
+eliminarInteresUsuario(id: any): Observable<any>{
+  let url = `${this.baseUri}/${this.interesUri}/interes-delete-fromUser/${id}`;
       return this.http.delete(url, { headers: this.headers, withCredentials:true }).pipe(
         catchError(this.errorMgmt)
       )
 }
 
+//Eliminar interes
+deleteInteres(id: any): Observable<any>{
+  let url = `${this.baseUri}/${this.interesUri}/interes-delete/${id}`;
+      return this.http.delete(url, { headers: this.headers, withCredentials:true }).pipe(
+        catchError(this.errorMgmt)
+      )
+}
+
+//Intereses según discusión
 interesDiscusion(data: any): Observable<any>{
   let url = `${this.baseUri}/${this.usuarioUri}/interes-discusion`;
   return this.http.post(url, data, {withCredentials:true})
     .pipe(
       catchError(this.errorMgmt)
     )
+}
+
+//Crear Interés
+crearInteres(data: any): Observable<any>{
+  let url = `${this.baseUri}/${this.interesUri}/interes-create`;
+  return this.http.post(url, data, { withCredentials:true })
+    .pipe(
+      catchError(this.errorMgmt)
+    )
+}
+
+//Actualizar Interés
+updateInteres(id: any, data: any): Observable<any>{
+  let url = `${this.baseUri}/${this.interesUri}/interes-update/${id}`;
+  return this.http.put(url, data, { headers: this.headers, withCredentials:true }).pipe(
+    catchError(this.errorMgmt)
+  )
+}
+
+getIntereses(): Observable<any>{
+  return this.http.get(`${this.baseUri}/${this.interesUri}/intereses`, { withCredentials:true });
+
 }
 //----------------------------
 

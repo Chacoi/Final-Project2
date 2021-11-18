@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form [formGroup]="interesForm" (ngSubmit)="onSubmit()">
+                <label for="nombre">Ingrese nombre del interés: </label>
+                <input type="text" id="nombre" placeholder="nombre interes" formControlName="nombre">
+                <label for="descripcion">Ingrese descripción del interés: </label>
+                <input type="text" id="descripcion" placeholder="descripcion interes" formControlName="descripcion">
+                <label for="imagen"imagen>Ingrese algún link de la imagen asociado al interés: </label>
+                <input type="text" id="imagen" placeholder="Ingrese discusión..." formControlName="imagen">
+                <button class="btn" type="submit">Enviar</button>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+

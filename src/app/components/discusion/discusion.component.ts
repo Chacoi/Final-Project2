@@ -131,7 +131,18 @@ export class DiscusionComponent implements OnInit {
       });
   }
 
-  
+  onDelete(id: any){
+    this.apiService.deleteComentario(id).subscribe(data => {
+      console.log(data);
+    })
+  }
+
+  getFecha(fecha: String): String {
+    let dia = fecha.charAt(8) + fecha.charAt(9);
+    let mes = fecha.charAt(5) + fecha.charAt(6);
+    let anho = fecha.charAt(0) + fecha.charAt(1) + fecha.charAt(2) + fecha.charAt(3)
+    return dia + '-' +  mes + '-' + anho;
+  }
   redirectTo(uri:string){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
     this.router.navigate([uri]));

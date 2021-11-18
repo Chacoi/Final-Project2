@@ -1,15 +1,22 @@
+.img-perfil {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: #ff9933 solid 3px;
+}
 img {
   width: 140px;
   height: 140px;
-  border-radius: 4%;
-  border: black solid 2px;
+  border-radius: 2%;
+  border: black solid 3px;
 }
 .data {
   border: black solid 2px;
-  background-color: #ffccb3;
+  background-color: #ffeaca;
   padding: 1em;
   border-radius: 2%;
   margin-top: 2em;
+  margin-bottom: 0.4em;
 }
 textarea {
   border: black solid 2px;
@@ -18,15 +25,18 @@ textarea {
 }
 .input-comentario {
   border: black solid 2px;
-  background-color: #ffccb3;
+  background-color: #ffeaca;
   padding: 2%;
 }
 #comment {
   border: black solid 2px;
-  background-color: #ffccb3;
+  background-color: #ffeaca;
   margin-top: 1em;
   padding: 1em;
   border-radius: 2%;
+}
+#boton-eliminar {
+  background-color: #d32d2d;
 }
 .starability-result {
   position: relative;
