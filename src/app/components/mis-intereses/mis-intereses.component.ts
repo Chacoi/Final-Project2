@@ -23,7 +23,7 @@ export class MisInteresesComponent implements OnInit {
     });
   }
   onClick(data: any){
-    this.apiService.eliminarInteres(data).subscribe(
+    this.apiService.eliminarInteresUsuario(data).subscribe(
       (res) => {
         console.log('Interés eliminado correctamente')
         this.redirectTo('/mis-intereses');

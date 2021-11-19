@@ -87,7 +87,7 @@ export class DiscusionComponent implements OnInit {
     } else {
       let id = this.actRoute.snapshot.paramMap.get('id');
       console.log(id);
-      this.apiService.crearComentario(this.comentarioForm.value, id).subscribe(
+      this.apiService.crearComentario(this.comentarioForm.value, id, 'discusion').subscribe(
         (res) => {
           console.log('Employee successfully created!')
           
@@ -131,7 +131,25 @@ export class DiscusionComponent implements OnInit {
       });
   }
 
-  
+  onDelete(id: any){
+    this.apiService.deleteComentario(id).subscribe(data => {
+      console.log(data);
+    })
+  }
+
+  getFecha(fecha: String): String {
+    let dia = fecha.charAt(8) + fecha.charAt(9);
+    let mes = fecha.charAt(5) + fecha.charAt(6);
+    let anho = fecha.charAt(0) + fecha.charAt(1) + fecha.charAt(2) + fecha.charAt(3)
+    return dia + '-' +  mes + '-' + anho;
+  }
+
+  getMedalla(id: any): any{
+    this.apiService.getMedalla(id).subscribe(data => {
+      console.log(data)
+      return  data;
+    });
+  }
   redirectTo(uri:string){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
     this.router.navigate([uri]));

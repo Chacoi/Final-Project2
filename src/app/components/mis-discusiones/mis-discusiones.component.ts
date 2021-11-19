@@ -9,9 +9,10 @@ import { DiscusionService } from 'src/app/services/discusion.service';
 })
 export class MisDiscusionesComponent implements OnInit {
   Discusion: any;
+  activeUser: any;
   constructor(private apiService: DiscusionService, private actRoute: ActivatedRoute) {
     this.readDiscusion();
-    
+    this.getUsuario();
    }
 
   ngOnInit(): void {
@@ -25,7 +26,12 @@ export class MisDiscusionesComponent implements OnInit {
 
     })    
   }
-
+  getUsuario(){
+    this.apiService.getUsuario().subscribe((data) =>{
+      this.activeUser = data;
+      console.log("usuario validado");
+    });
+  }
   removeDiscusion(discusion: any, index: any) {
     if(window.confirm('Are you sure?')) {
         this.apiService.deleteDiscusion(discusion._id).subscribe((data) => {
@@ -34,5 +40,11 @@ export class MisDiscusionesComponent implements OnInit {
       )    
     }
   }
-
+  
+  getFecha(fecha: String): String {
+    let dia = fecha.charAt(8) + fecha.charAt(9);
+    let mes = fecha.charAt(5) + fecha.charAt(6);
+    let anho = fecha.charAt(0) + fecha.charAt(1) + fecha.charAt(2) + fecha.charAt(3)
+    return dia + '-' +  mes + '-' + anho;
+  }
 }

@@ -1,5 +1,7 @@
 .tList {
   border: black solid 2px;
+  padding: 0.6em;
+  background-color: #edffc4;
 }
 img {
   width: 100px;
@@ -7,4 +9,7 @@ img {
 }
 .me-interesa {
   background-color: #ff9933;
+}
+.data {
+  margin-left: 1rem;
 }
