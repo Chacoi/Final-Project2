@@ -1,3 +1,4 @@
+<ng-container *ngIf="this.activeUser._id">
 <div class="container background">
     <ng-container *ngIf="">
 
@@ -32,3 +33,7 @@
     
     
 </div>
+</ng-container>
+<ng-container *ngIf="!this.activeUser._id">
+    <h1>Usuario no registrado</h1>
+    </ng-container>

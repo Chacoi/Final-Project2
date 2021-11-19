@@ -1,5 +1,5 @@
  <div class="container background">
-    <ng-container  *ngIf="!this.activeUser"> 
+    <ng-container  *ngIf="this.activeUser.username"> 
      <ng-container *ngFor="let discusiones of this.Discusion">
          <ng-container *ngFor="let discusion of discusiones">
             <div class="row tList mt-5">
@@ -26,7 +26,7 @@
         </ng-container>
      </ng-container>
     </ng-container>
-      <ng-container  *ngIf="this.activeUser"> 
+      <ng-container  *ngIf="!this.activeUser.username"> 
         <ng-container *ngFor="let discusion of this.DiscusionAll">
            <div class="row tList mt-5">
                <div class="col-10 d-inline-flex title">

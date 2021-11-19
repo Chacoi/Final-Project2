@@ -206,7 +206,16 @@ updateUsuario( data: any): Observable<any>{
     catchError(this.errorMgmt)
   )
 }
-
+//Obtener medalla de usuario
+getMedalla(id: any): Observable<any>{
+  let url = `${this.baseUri}/${this.usuarioUri}/medalla/${id}`;
+  return this.http.get<Response>(url, {headers: this.headers, withCredentials:true}).pipe(
+    map((res: Response) => {
+      return res || {}
+    }),
+    catchError(this.errorMgmt)
+  )
+}
 //-----Interes-----
 
 //Agregar interes a usuario

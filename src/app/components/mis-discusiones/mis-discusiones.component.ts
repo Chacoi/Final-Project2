@@ -9,9 +9,10 @@ import { DiscusionService } from 'src/app/services/discusion.service';
 })
 export class MisDiscusionesComponent implements OnInit {
   Discusion: any;
+  activeUser: any;
   constructor(private apiService: DiscusionService, private actRoute: ActivatedRoute) {
     this.readDiscusion();
-    
+    this.getUsuario();
    }
 
   ngOnInit(): void {
@@ -25,7 +26,12 @@ export class MisDiscusionesComponent implements OnInit {
 
     })    
   }
-
+  getUsuario(){
+    this.apiService.getUsuario().subscribe((data) =>{
+      this.activeUser = data;
+      console.log("usuario validado");
+    });
+  }
   removeDiscusion(discusion: any, index: any) {
     if(window.confirm('Are you sure?')) {
         this.apiService.deleteDiscusion(discusion._id).subscribe((data) => {

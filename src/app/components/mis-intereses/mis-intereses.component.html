@@ -1,3 +1,4 @@
+<ng-container *ngIf="this.activeUser._id">
 <div class="container mis-intereses">
     
     <button class="btn btn-success mt-3" routerLink="/nuevo-interes">Todos los intereses</button>
@@ -19,3 +20,8 @@
     </ng-container>
   </div>
 </div> 
+
+</ng-container>
+<ng-container *ngIf="!this.activeUser._id">
+  <h1>Usuario no registrado</h1>
+  </ng-container>

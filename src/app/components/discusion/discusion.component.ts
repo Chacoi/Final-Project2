@@ -143,6 +143,13 @@ export class DiscusionComponent implements OnInit {
     let anho = fecha.charAt(0) + fecha.charAt(1) + fecha.charAt(2) + fecha.charAt(3)
     return dia + '-' +  mes + '-' + anho;
   }
+
+  getMedalla(id: any): any{
+    this.apiService.getMedalla(id).subscribe(data => {
+      console.log(data)
+      return  data;
+    });
+  }
   redirectTo(uri:string){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
     this.router.navigate([uri]));

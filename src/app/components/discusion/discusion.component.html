@@ -1,3 +1,4 @@
+
 <div class="container">
     <div class="row" id="encabezado">
         <div class="col-lg-3 pl-1">
@@ -26,10 +27,12 @@
             </div>
         </div>
     </div>
+    <span class="pb-3"><b> Etiquetas de interés:</b></span> 
     <div class="tags">
+        
         <ng-container *ngFor="let interes of discusion.intereses">
         <div class=" d-inline-flex">
-            <span class="pt-3">Etiquetas de interés: </span><p class="tag"><b> {{interes}}</b> </p>
+            <span class="pt-3"> </span><p class="tag"><b> {{interes}}</b> </p>
         </div>
     </ng-container>
     </div>
@@ -59,3 +62,4 @@
     </ng-container>
     
 </div>
+

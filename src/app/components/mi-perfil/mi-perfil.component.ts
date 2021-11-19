@@ -53,23 +53,41 @@ export class MiPerfilComponent implements OnInit {
     
   
  
-    if(this.score>=50&&this.score<250){
-      this.medalla = "../../../../assets/medalla1.png"
+    if(this.score>=20&&this.score<120){
+      this.medalla = "../../../../assets/medalla1.png";
+      this.apiService.updateUsuario(this.medalla).subscribe(data => {
+        console.log(data);
+      })
     }
-    if(this.score>=250&&this.score<500){
-      this.medalla = "../../../../assets/medalla2.png"
+    if(this.score>=120&&this.score<210){
+      this.medalla = "../../../../assets/medalla2.png";
+      this.apiService.updateUsuario(this.medalla).subscribe(data => {
+        console.log(data);
+      })
     }
-    if(this.score>=500&&this.score<1000){
-      this.medalla = "../../../../assets/medalla3.png"
+    if(this.score>=210&&this.score<360){
+      this.medalla = "../../../../assets/medalla3.png";
+      this.apiService.updateUsuario(this.medalla).subscribe(data => {
+        console.log(data);
+      })
     }
-    if(this.score>=1000&&this.score<1500){
-      this.medalla = "../../../../assets/medalla4.png"
+    if(this.score>=360&&this.score<540){
+      this.medalla = "../../../../assets/medalla4.png";
+      this.apiService.updateUsuario(this.medalla).subscribe(data => {
+        console.log(data);
+      })
     }
-    if(this.score>=1500&&this.score<3000){
-      this.medalla = "../../../../assets/medalla5.png"
+    if(this.score>=540&&this.score<780){
+      this.medalla = "../../../../assets/medalla5.png";
+      this.apiService.updateUsuario(this.medalla).subscribe(data => {
+        console.log(data);
+      })
     }
-    if(this.score>=3000){
-      this.medalla = "../../../../assets/medalla6.png"
+    if(this.score>=1000){
+      this.medalla = "../../../../assets/medalla6.png";
+      this.apiService.updateUsuario(this.medalla).subscribe(data => {
+        console.log(data);
+      })
     }
   }
 
