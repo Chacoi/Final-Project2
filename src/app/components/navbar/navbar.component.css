@@ -11,3 +11,6 @@ a {
 navbar-elements {
   display: block;
 }
+#navbar {
+  height: auto;
+}

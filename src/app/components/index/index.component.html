@@ -29,7 +29,7 @@
       <ng-container  *ngIf="!this.activeUser.username"> 
         <ng-container *ngFor="let discusion of this.DiscusionAll">
            <div class="row tList mt-5">
-               <div class="col-10 d-inline-flex title">
+               <div class="col-lg-10 col-8 d-inline-flex title">
                    <div>
                    <img src="https://images.unsplash.com/photo-1612625365859-0721ffb8f7e6?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDN8cVBZc0R6dkpPWWN8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
                    </div>
@@ -45,7 +45,7 @@
                        
                    </div>
                </div>
-               <div class="col-2 justify-content-end subject-body">
+               <div class="col-lg-2 col-4 justify-content-end subject-body">
                    <button class="btn me-interesa mr-5 mt-2 mb-4" [routerLink]="['/', discusion._id]">Ver más</button>
                    <br>
                    <span>Creada el: {{getFecha(discusion.fecha)}}</span>            
