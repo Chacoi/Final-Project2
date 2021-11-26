@@ -2,13 +2,13 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { DiscusionService } from 'src/app/services/discusion.service';
 @Component({
-  selector: 'app-mi-perfil',
-  templateUrl: './mi-perfil.component.html',
-  styleUrls: ['./mi-perfil.component.less']
+  selector: 'app-perfil-usuario',
+  templateUrl: './perfil-usuario.component.html',
+  styleUrls: ['./perfil-usuario.component.less']
 })
-export class MiPerfilComponent implements OnInit {
-  activeUser: any;
-  selectedFile!: File;
+export class PerfilUsuarioComponent implements OnInit {
+  User: any;
+  
   constructor(private apiService: DiscusionService,
     private actRoute: ActivatedRoute,
    private router: Router,
@@ -26,20 +26,22 @@ export class MiPerfilComponent implements OnInit {
   ngOnInit(): void {
   }
   getUsuario(){
+    let id = this.actRoute.snapshot.paramMap.get('id');
     console.log("get-usuario 1")
-    this.apiService.getUsuario().subscribe((data) =>{
+    this.apiService.getUsuarioExterno(id).subscribe((data) =>{
       console.log(data);
-      this.activeUser = data;
+      this.User = data;
     });
   }
   updateData(){
-    this.apiService.countDiscusiones().subscribe( data => {
+    let id = this.actRoute.snapshot.paramMap.get('id');
+    this.apiService.countDiscusionesExterno(id).subscribe( data => {
       this.comendsDiscusiones = data;
-      this.apiService.countComentarios().subscribe(data => {
+      this.apiService.countComentariosExterno(id).subscribe(data => {
         this.comendsComentarios = data;
-        this.apiService.getDiscusionesByUser().subscribe(data => {
+        this.apiService.getDiscusionesByUserExterno(id).subscribe(data => {
           this.totalDiscusiones = data.length;
-          this.apiService.getComentariosByUser().subscribe(data =>{
+          this.apiService.getComentariosByUserExterno(id).subscribe(data =>{
             this.totalComentarios = data.length;
             this.score = (this.comendsDiscusiones * 1.8) + this.totalDiscusiones;
             console.log(this.score);
@@ -90,33 +92,6 @@ export class MiPerfilComponent implements OnInit {
       })
     }
   }
-
-  onFileSelected(event: any){
-    if(event.target.files.length > 0 ){
-      const file = event.target.files[0];
-      this.selectedFile = file;
-    }
-   }
-   onSubmit() {
-
-   const formData = new FormData();
-   formData.append('file', this.selectedFile);
-   console.log(formData);
-   this.apiService.setFile(formData);
-   this.redirectTo("/mi-perfil");
-   }
-
-   redirectTo(uri:string){
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate([uri]));
- }
-/*
-  50ptos = medalla 1
-  250ptos = medalla 2
-  500ptos = medalla 3
-  1000ptos = medalla 4
-  1500ptos = medalla 5
-  3000ptos = medalla 6
-  */
-  
 }
+  
+  

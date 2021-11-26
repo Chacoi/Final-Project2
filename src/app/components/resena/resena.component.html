@@ -2,17 +2,17 @@
     
     <div class="row data">
         
-        <div class="col-lg-3">
+        <!-- <div class="col-lg-3">
             <img src="https://images.unsplash.com/photo-1538137518296-2b8f90394f04?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDR8NnNNVmpUTFNrZVF8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
-        </div>
-        <div class="col-lg-8">
+        </div> -->
+        
             <div class="mt-3">
                 <h5><b>Nombre:</b>  {{this.asignatura.nombre}}</h5>
                 <h5><b>Descripción:</b>{{this.asignatura.descripcion}}</h5>
-                <h5><b>Descripción:</b> <b> <i>{{this.puntuacion}}</i></b></h5>
+                <h5><b>Puntuación: </b> <b> <i>{{this.puntuacion}}</i></b></h5>
             </div>
             
-        </div>
+        
         <div class="col-lg-1"></div>
     </div>
     <div class="container input-comentario">
@@ -40,11 +40,13 @@
     <ng-container *ngFor="let comentario of this.asignatura.comentarios">   
         <div id="comment" class="row">
             <div class="col-lg-3">
-                <img class="img-perfil" src="https://images.unsplash.com/photo-1631096207334-5a250b246a0c?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
-                <span>{{comentario.autor}}</span>
-                
+                <span><b>{{comentario.autor}}</b> </span>
+                <br>
                 <ng-container *ngIf="this.activeUser._id==comentario.idAutor||this.activeUser.permisos=='admin'||this.activeUser.permisos=='moderador'">
                     <button class="btn" id="boton-eliminar" (click)=onDelete(comentario._id)>Eliminar</button>
+                </ng-container>
+                <ng-container *ngIf="this.activeUser._id">
+                    <button class="btn" (click)="comendComentario(comentario._id, true)">Recomendar</button>
                 </ng-container>
             </div>
             

@@ -3,10 +3,11 @@
     <div class="row" id="encabezado">
         <div class="col-lg-3 pl-1">
             <div class="profile-icon ">
-                <img id="profile-img"src="https://images.unsplash.com/photo-1631096207334-5a250b246a0c?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
-                
-                <span id="username"><b>{{discusion.autor}}</b></span>
+                <img id="profile-img"[attr.src]="this.medalla" alt="">
+                <span id="username"><b>{{discusion.autor}}</b> </span>
                 <div class="botones mt-3">
+                    <ng-container *ngIf="this.activeUser._id">
+
                     <button class="btn boton-recomendar p-2" (click)="comend(true)">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -14,6 +15,7 @@
                         </svg>
                           Recomendar
                     </button>
+                    </ng-container>
                     <ng-container *ngIf="this.activeUser._id==discusion.idAutor||this.activeUser.permisos=='admin'||this.activeUser.permisos=='moderador'">
                         <button class="btn btn-success" [routerLink]="['edit']">Editar discusión</button>
                         <button class="btn" id="boton-eliminar" (click)="eliminarDiscusion()">Eliminar discusión</button>
@@ -47,11 +49,16 @@
     <ng-container *ngFor="let comentario of discusion.comentarios; let i=index">
         <div id="comment" class="row">
             <div class="col-3 ">
-                <img id ="comment-img"src="https://images.unsplash.com/photo-1631096207334-5a250b246a0c?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDIxfDZzTVZqVExTa2VRfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
-                <span class="ml-2">{{comentario.autor}}</span>
+            
+                <span class="ml-2"><b>{{comentario.autor}}</b> </span>
                 <br>
+                <ng-container *ngIf="this.activeUser._id==discusion.idAutor||this.activeUser.permisos=='admin'||this.activeUser.permisos=='moderador'">
+
                 <button class="btn mt-2" (click)=onDelete(comentario._id)>Eliminar</button>
+                </ng-container>
+                <ng-container *ngIf="this.activeUser._id">
                 <button class="btn" (click)="comendComentario(comentario._id, true)">Recomendar comentario</button>
+            </ng-container>
             </div>
             <div class="col-9">
                 <p> <b>{{comentario.comentario}} </b></p>

@@ -46,6 +46,10 @@ getDiscusiones(){
 getDiscusionesByUser(): Observable<any>{
   return this.http.get(`${this.baseUri}/${this.discusionUri}/discusion-user-list`, { withCredentials:true });
 }
+
+getDiscusionesByUserExterno(id: any): Observable<any>{
+  return this.http.get(`${this.baseUri}/${this.discusionUri}/discusion-user-list/${id}`, { withCredentials:true });
+}
 //Ver discusiones según interés
 getDiscusionesInteres(tag: any){
   return this.http.get(`${this.baseUri}/${this.discusionUri}/discusion-list/${tag}`, {withCredentials: true});
@@ -89,6 +93,10 @@ valorarDiscusion(id:any, data:any): Observable<any> {
 countDiscusiones(): Observable<any> {
   return this.http.get(`${this.baseUri}/${this.discusionUri}/discusion-count`, {withCredentials: true});
 }
+
+countDiscusionesExterno(id: any): Observable<any> {
+  return this.http.get(`${this.baseUri}/${this.discusionUri}/discusion-count/${id}`, {withCredentials: true});
+}
 //-----------------------------
 //---------Comentario--------------
 // Get comentario
@@ -130,9 +138,17 @@ valorarComentario(id: any, data: any): Observable<any>{
 countComentarios(): Observable<any> {
   return this.http.get(`${this.baseUri}/${this.comentarioUri}/comentario-count`, {withCredentials: true});
 }
+
+countComentariosExterno(id: any): Observable<any> {
+  return this.http.get(`${this.baseUri}/${this.comentarioUri}/comentario-count/${id}`, {withCredentials: true});
+}
 //Comentarios del usuario activo
 getComentariosByUser(): Observable<any>{
-  return this.http.get(`${this.baseUri}/${this.comentarioUri}/comentario-user-list`, { withCredentials:true });
+  return this.http.get(`${this.baseUri}/${this.comentarioUri}/comentario-read`, { withCredentials:true });
+}
+
+getComentariosByUserExterno(id: any): Observable<any>{
+  return this.http.get(`${this.baseUri}/${this.comentarioUri}/comentario-read/${id}`, { withCredentials:true });
 }
 //------------------------------
 
@@ -141,6 +157,8 @@ getComentariosByUser(): Observable<any>{
 getUsuarios(): Observable<any>{
   return this.http.get(`${this.baseUri}/${this.usuarioUri}/user-list`, { withCredentials:true });
 }
+
+
  //Crear usuario
 crearUsuario(data: any): Observable<any>{
   let url = `${this.baseUri}/${this.usuarioUri}/register`;
@@ -167,6 +185,10 @@ getUsuario(): Observable<any> {
     }),
     catchError(this.errorMgmt)
   );
+}
+
+getUsuarioExterno(id: any): Observable<any>{
+  return this.http.get(`${this.baseUri}/${this.usuarioUri}/usuario-activo/${id}`, { withCredentials:true });
 }
 //Eliminar usuario
 deleteUsuario(id: any): Observable<any> {
@@ -195,10 +217,8 @@ darPrivilegio(id: any, data: any): Observable<any>{
     catchError(this.errorMgmt)
   )
 }
-//Iniciar sesión con facebook
-facebookAuth(): Observable<any> {
-  return this.http.get(`${this.baseUri}/auth/facebook`, { withCredentials:true });
-}
+
+
 //Actualizar datos usuario
 updateUsuario( data: any): Observable<any>{
   let url = `${this.baseUri}/${this.usuarioUri}/usuario-update`;

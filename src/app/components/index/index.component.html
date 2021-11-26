@@ -1,5 +1,5 @@
  <div class="container background">
-    <ng-container  *ngIf="this.activeUser.username"> 
+    <!-- <ng-container  *ngIf="this.activeUser.username"> 
      <ng-container *ngFor="let discusiones of this.Discusion">
          <ng-container *ngFor="let discusion of discusiones">
             <div class="row tList mt-5">
@@ -25,13 +25,13 @@
             </div>
         </ng-container>
      </ng-container>
-    </ng-container>
-      <ng-container  *ngIf="!this.activeUser.username"> 
+    </ng-container> -->
+      <!-- <ng-container  *ngIf="this.activeUser.username">  -->
         <ng-container *ngFor="let discusion of this.DiscusionAll">
            <div class="row tList mt-5">
                <div class="col-lg-10 col-8 d-inline-flex title">
                    <div>
-                   <img src="https://images.unsplash.com/photo-1612625365859-0721ffb8f7e6?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDN8cVBZc0R6dkpPWWN8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+                   <img [attr.src]="discusion.image" alt="">
                    </div>
                    <div>
                        <h4 class="data">{{discusion.titulo}}</h4>
@@ -53,5 +53,5 @@
            
            </div>
        </ng-container>
-     </ng-container> 
+     
 </div>

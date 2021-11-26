@@ -1,30 +1,14 @@
 <div class="container">
     <div class="profile row">
         <div class="col-lg-3 col-12">
-            <img [attr.src]="this.activeUser.medalla" id="imagen-perfil" alt="">
-
-            
-                <!-- <form (ngSubmit)="onSubmit()">
-                    <div class="form-group">
-                    <input 
-                    type="file"
-                    name="image"
-                    class="form-control"
-                    formControlName="image"
-                    (change)="onFileSelected($event)"
-                    >
-                    </div>
-                    <button class="btn" type="submit">Modificar imagen</button>
-                </form> -->
-        </div>
+<img [attr.src]="this.User.image" id="imagen-perfil" alt="">        </div>
 <!-- ../../../assets/branimir-balogovic-yY66QAbGxq4-unsplash.jpg -->
 <div class="col-lg-7 col-12">
-            <h3 class="mt-5 username">{{this.activeUser.username}}</h3>
-            <h3><i>{{this.activeUser.email}}</i></h3>
+            <h3 class="mt-5 username">{{this.User.username}}</h3>
+            <h3><i>{{this.User.email}}</i></h3>
            
         </div>
         <div class="col-lg-2 col-12 ">
-            <a class="btn" href="/usuario-edit">Modificar</a>
             <a class="btn" href="/medals-info">Medallas</a>
         </div>
     </div>
@@ -36,18 +20,16 @@
                 <h4>Comends por discusiones: <b class="number">{{this.comendsDiscusiones}}</b></h4>
                 <h4>Comends por comentarios: <b class="number">{{this.comendsComentarios}}</b></h4>
                 <h4>Puntaje total usuario: <b class="number">{{this.score}}</b></h4>
-                <!-- <h4 class="mt-5">Logros: </h4>
-                <button class="btn" (click)="updateData()">Actualizar info</button> -->
             </div>
         </div>
         <div class="col-lg-6 col-12">
-            <!-- <div class="data emblema">
+            <div class="data emblema">
                 <h4>Tu emblema:</h4>
 
             </div>
             <div class="emblema-icon">
-                <img [src]="this.activeUser.medalla" class="medalla" alt="">
-            </div> -->
+                <img [src]="this.medalla" class="medalla" alt="">
+            </div>
         </div>
     </div>
 </div>

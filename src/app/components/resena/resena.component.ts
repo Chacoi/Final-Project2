@@ -13,6 +13,7 @@ export class ResenaComponent implements OnInit {
   comentario: any;
   asignatura: any;
   puntuacion: any;
+  data: any;
   comentarioForm: FormGroup;
   constructor(private apiService: DiscusionService,
     private actRoute: ActivatedRoute,private router: Router,
@@ -93,7 +94,20 @@ export class ResenaComponent implements OnInit {
     let anho = fecha.charAt(0) + fecha.charAt(1) + fecha.charAt(2) + fecha.charAt(3)
     return dia + '-' +  mes + '-' + anho;
   }
-
+  comendComentario(idComentario: any, valoracion: Boolean){
+    this.data = {
+      valoracion: valoracion
+    }
+    let id = this.actRoute.snapshot.paramMap.get('id');
+    this.apiService.valorarComentario(idComentario, this.data).subscribe(
+      (res) => {
+        console.log('Valoracion ingresada correctamente');
+        
+        this.redirectTo('/'+ id);
+      }, (error) => {
+        console.log(error);
+      });
+  }
   redirectTo(uri:string){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
     this.router.navigate([uri]));

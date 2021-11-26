@@ -79,10 +79,10 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
 
-    const formData = new FormData();
-    formData.append('file', this.selectedFile);
-    console.log(formData);
-    this.apiService.setFile(formData);
+    // const formData = new FormData();
+    // formData.append('file', this.selectedFile);
+    // console.log(formData);
+    // this.apiService.setFile(formData);
     
      this.submitted = true;
      if (!this.usuarioForm.valid) {

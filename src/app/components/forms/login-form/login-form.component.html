@@ -15,7 +15,7 @@
                 
                 <div class="form-group">
                   <label for="inputPassword">Contrasena: </label>
-                  <input class="form-control" type="text" formControlName="password" placeholder="contraseña">
+                  <input class="form-control" type="password" formControlName="password" placeholder="contraseña">
                   <!-- error -->
                   <div class="invalid-feedback" *ngIf="submitted && myForm.password.errors?.required">
                     Password is required.

@@ -7,33 +7,54 @@
                 <input type="text" id="title" placeholder="título discusión" formControlName="titulo">
                 <label for="contenido">Ingrese el contenido de su discusión: </label>
                 <textarea type="text" id="contenido" placeholder="Ingrese discusión..." formControlName="contenido"></textarea>
-                    <p>
+                  <p>¿Qué connotación tiene su discusión?</p>
+                  <p>
+                    <label for="Positiva">
+                      <input type="checkbox" id="Positiva" class="connotacion"/>
+                      <span>Positiva</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label for="Neutral">
+                      <input type="checkbox" id="Neutral" class="connotacion"/>
+                      <span>Neutra</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label for="Negativa">
+                      <input type="checkbox" id="Negativa" class="connotacion"/>
+                      <span>Negativa</span>
+                    </label>
+                  </p>
+                  <p>-------------------</p>
+                  <p>¿Qué intereses podrían asociarse a su discusión?</p>                
+                   <p>
                       <label for="aula-virtual">
-                        <input type="checkbox" id="aula-virtual"/>
+                        <input type="checkbox" id="aula-virtual" class="interes"/>
                         <span>aula-virtual</span>
                       </label>
                     </p>
                     <p>
                         <label>
-                          <input type="checkbox" id="algebra-lineal"/>
+                          <input type="checkbox" id="algebra-lineal" class="interes"/>
                           <span>algebra-lineal</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                          <input type="checkbox" id="ibc"/>
+                          <input type="checkbox" id="ibc" class="interes"/>
                           <span>ibc</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                          <input type="checkbox" id="biblioteca-fin"/>
+                          <input type="checkbox" id="biblioteca-fin" class="interes"/>
                           <span>biblioteca-fin</span>
                         </label>
                       </p>
                     <p>
                         <label>
-                          <input type="checkbox" id="inf"/>
+                          <input type="checkbox" id="inf" class="interes"/>
                           <span>inf</span>
                         </label>
                     </p>

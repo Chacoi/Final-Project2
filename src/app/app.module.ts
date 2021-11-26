@@ -27,6 +27,7 @@ import { AddInteresComponent } from './components/forms/add-interes/add-interes.
 import { EditUsuarioComponent } from './components/forms/edit-usuario/edit-usuario.component';
 import { MedalsInfoComponent } from './components/medals-info/medals-info.component';
 import { BackComponent } from './components/back/back.component';
+import { PerfilUsuarioComponent } from './components/perfil-usuario/perfil-usuario.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'index'},
@@ -47,6 +48,7 @@ const routes: Routes = [
   {path: 'crear-interes', component: AddInteresComponent},
   {path: 'usuario-edit', component: EditUsuarioComponent},
   {path: 'medals-info', component: MedalsInfoComponent},
+  {path: ':discusion/perfil-usuario/:id', component: PerfilUsuarioComponent},
   {path: ':id', component: DiscusionComponent}
 ]
 
@@ -72,7 +74,8 @@ const routes: Routes = [
     AddInteresComponent,
     EditUsuarioComponent,
     MedalsInfoComponent,
-    BackComponent
+    BackComponent,
+    PerfilUsuarioComponent
   ],
   imports: [
     BrowserModule,

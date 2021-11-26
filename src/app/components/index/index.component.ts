@@ -26,18 +26,17 @@ export class IndexComponent implements OnInit {
       this.DiscusionAll = data;
       console.log(data);
      });
-    // if(this.activeUser.intereses){
-    //   console.log(this.activeUser.intereses)
-    //   for(let interes of this.activeUser.intereses){
-    //     this.apiService.getDiscusionesInteres(interes.nombre).subscribe((data) => {
-    //       console.log(data);
-          
-    //        this.Discusion.push(data);
-    //      }) 
-    //   }
-    // }else{
-    //   console.log("Usted no posee intereses o no está registrado");
-    // }
+    //  if(this.activeUser.intereses){
+    //    console.log(this.activeUser.intereses)
+    //    for(let interes of this.activeUser.intereses){
+    //      this.apiService.getDiscusionesInteres(interes.nombre).subscribe((data) => {
+    //        console.log(data);
+    //         this.Discusion.push(data);
+    //       }) 
+    //    }
+    //  }else{
+    //    console.log("Usted no posee intereses o no está registrado");
+    //  }
   }
 
   getUsuario(){

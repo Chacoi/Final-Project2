@@ -72,11 +72,7 @@ export class LoginFormComponent implements OnInit {
         return true;
     }
   }
-  facebookAuth(){
-    this.apiService.facebookAuth().subscribe(data => {
-      console.log(data);
-    })
-  }
+  
   redirectTo(uri:string){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
     this.router.navigate([uri]));

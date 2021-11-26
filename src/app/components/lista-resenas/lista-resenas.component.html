@@ -1,15 +1,15 @@
 <div class="container">
-    <form class="d-flex mt-5 pt-3">
+    <!-- <form class="d-flex mt-5 pt-3">
         <input class="form-control me-2 search-bar" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
+    </form> -->
     <button class="btn btn-success" routerLink="/resena-form" *ngIf="this.activeUser.permisos=='admin'">Agregar asignatura</button>
     <ng-container *ngFor="let asignatura of this.asignaturas">
         <div class="row tList mt-5">
             <div class="col-lg-10 col-8 d-inline-flex title">
-                <div>
+                <!-- <div>
                 <img src="https://images.unsplash.com/photo-1612625365859-0721ffb8f7e6?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDN8cVBZc0R6dkpPWWN8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
-                </div>
+                </div> -->
                 <div>
                     <h4 class="data">Nombre asignatura: <b>{{asignatura.nombre}}</b></h4>
                     <span class="data">Clave: <b>{{asignatura.clave}}</b></span>

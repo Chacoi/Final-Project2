@@ -14,6 +14,7 @@ export class AddDiscusionComponent implements OnInit {
   discusionForm: FormGroup;
   discusionTags:any = ['aula-virtual', 'algebra-lineal', 'ibc', 'biblioteca-fin', 'inf']
   discusionIntereses:any = [];
+  discusionTipo:any;
   constructor(public fb: FormBuilder,
     private router: Router,
     private ngZone: NgZone,
@@ -49,13 +50,21 @@ export class AddDiscusionComponent implements OnInit {
       const inputs = form!.getElementsByTagName("input");
       for(let input of inputs){
         const interes = input.getAttribute("id");
-        if(input.checked){
-          this.discusionIntereses.push(interes);
+        const clase = input.getAttribute("class");
+        if(clase == 'interes'){
+          if(input.checked){
+            this.discusionIntereses.push(interes);
+          }
+        }else if(clase == 'connotacion' && input.checked){
+          this.discusionTipo = input.getAttribute("id");
+
         }
+        
       }
       this.discusion = {
         contenido: this.discusionForm.value,
-        intereses: this.discusionIntereses
+        intereses: this.discusionIntereses,
+        tipo: this.discusionTipo
       }
        this.apiService.crearDiscusion(this.discusion).subscribe(
          (res) => {

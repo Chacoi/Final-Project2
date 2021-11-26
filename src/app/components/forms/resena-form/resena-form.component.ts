@@ -50,7 +50,7 @@ export class ResenaFormComponent implements OnInit {
        this.apiService.crearAsignatura(this.asignatura).subscribe(
          (res) => {
            console.log('Employee successfully created!')
-           this.redirectTo(`/mis-discusiones`);
+           this.redirectTo(`/lista-resenas`);
           
          }, (error) => {
            console.log(error);

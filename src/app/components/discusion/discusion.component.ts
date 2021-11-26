@@ -13,13 +13,15 @@ export class DiscusionComponent implements OnInit {
   submitted = false;
   activeUser: any;
   comentarioForm: FormGroup;
+  medalla: any;
   constructor(private apiService: DiscusionService,
-     private actRoute: ActivatedRoute,
-     public fb: FormBuilder,
+    private actRoute: ActivatedRoute,
+    public fb: FormBuilder,
     private router: Router,
     private ngZone: NgZone
      ) {
       this.getUsuario();
+      
       this.comentarioForm = fb.group({
         title: fb.control('initial value', Validators.required)
     });
@@ -37,6 +39,8 @@ export class DiscusionComponent implements OnInit {
   readDiscusion(id: any){
     this.apiService.getDiscusion(id).subscribe( data => {
       this.discusion = data;
+      this.medalla = this.getMedalla(this.discusion.idAutor)
+     //console.log(this.medalla);
       console.log(data);
     })
   }
@@ -144,10 +148,10 @@ export class DiscusionComponent implements OnInit {
     return dia + '-' +  mes + '-' + anho;
   }
 
-  getMedalla(id: any): any{
+  getMedalla(id: any){
     this.apiService.getMedalla(id).subscribe(data => {
       console.log(data)
-      return  data;
+      this.medalla = data;
     });
   }
   redirectTo(uri:string){
